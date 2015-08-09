@@ -12,6 +12,9 @@
 ## New User
 ![new-user]
 
+## Dashboard
+![dashboard]
+
 ## Top Solo Slams
 ![public-top-solo]
 ![public-top-solo-hover]
@@ -24,10 +27,16 @@
 ![group-modal-color1]
 ![group-modal-color2]
 
+## New Solo Slam
+![solo-slam-form]
+
+## New Group Slam
+![group-slam-form]
 
 
 
 [about]: ./wireframes/aboutpage.png
+[dasboard]: ./wireframes/dashboard.png
 [public-home]: ./wireframes/publichomepage.png
 [new-session]: ./wireframes/returninguser.png
 [new-user]: ./wireframes/newusersignup.png
