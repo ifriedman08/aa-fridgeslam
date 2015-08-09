@@ -1,26 +1,43 @@
 # View Wireframes
 
+## Public Home
+![public-home]
+
+## About
+![about]
+
 ## New Session
 ![new-session]
 
-## Feed Show (landing page)
-![feed-show]
+## New User
+![new-user]
 
-## Blog Show
-![blog-show]
+## Top Solo Slams
+![public-top-solo]
+![public-top-solo-hover]
+![public-top-solo-modal]
 
-## Post Show
-![post-show]
+## Top Group Slams
+![public-top-group]
+![top-group-hover]
+![group-modal]
+![group-modal-color1]
+![group-modal-color2]
 
-## Post Form
-![post-form]
 
-## Search Results
-![search-results]
 
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
+
+[about]: ./wireframes/aboutpage.png
+[public-home]: ./wireframes/publichomepage.png
+[new-session]: ./wireframes/returninguser.png
+[new-user]: ./wireframes/newusersignup.png
+[public-top-solo]: ./wireframes/publictopsolo.png
+[public-top-solo-hover]: ./wireframes/publictopsolohover.png
+[public-top-solo-modal]: ./wireframes/publictopsolomodal.png
+[group-modal]: ./wireframes/groupmodal.png
+[group-modal-color1]: ./wireframes/groupmodalcolor1.png
+[group-modal-color2]: ./wireframes/groupmodalcolor2.png
+[group-slam-form]: ./wireframes/groupslamform.png
+[public-top-group]: ./wireframes/publictopgroup.png
+[top-group-hover]: ./wireframes/topgrouphover.png
+[solo-slam-form]: ./wireframes/topgrouphover.png
