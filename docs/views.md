@@ -36,7 +36,7 @@
 
 
 [about]: ./wireframes/aboutpage.png
-[dasboard]: ./wireframes/dashboard.png
+[dashboard]: ./wireframes/dashboard.png
 [public-home]: ./wireframes/publichomepage.png
 [new-session]: ./wireframes/returninguser.png
 [new-user]: ./wireframes/newusersignup.png
