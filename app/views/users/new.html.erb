@@ -67,6 +67,12 @@
         border: 3px solid black;
       }
 
+      .errors {
+        color: red;
+        font-weight: 400;
+        font-size: 20px;
+      }
+
       ::-webkit-input-placeholder {
           color: grey;
       }
@@ -88,9 +94,10 @@
       <form class="new-user-form" action="/users/" method="post">
         <%= auth_token_input %>
         <h1>New User Sign Up</h1>
-        <input type="text" name="user[username]" placeholder="Pick a username">
+        <p class="errors"><%= flash[:errors].join("<br>").html_safe if flash[:errors] %></p>
+        <input type="text" name="user[username]" placeholder="Pick a username" value="<%= @user.username%>">
         <br>
-        <input type="text" name="user[email]" placeholder="Your email">
+        <input type="text" name="user[email]" placeholder="Your email" value="<%= @user.email%>">
         <br>
         <input type="password" name="user[password]" placeholder="Pick a password">
         <br>
@@ -174,7 +181,6 @@
             );
         }).bind(this), 500)
         };
-        Game.NUM_CIRCLES = 4000;
         Game.prototype.render = function (ctx) {
           ctx.clearRect(0, 0, this.xDim, this.yDim);
 

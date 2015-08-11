@@ -20,7 +20,7 @@
       input {
         padding: 4px;
         margin: 4px auto;
-        color: darkgrey;
+        color: black;
         text-align: center;
         font-size: 20px;
         font-family: courier;
@@ -85,9 +85,10 @@
     </canvas>
     <div class="container">
       <img src="/assets/slam-logo.png" class="slam-logo" alt="" />
-      <form class="new-user-form" action="/users/" method="post">
+      <form class="new-session-form" action="/session/" method="post">
         <%= auth_token_input %>
         <h1>Sign In</h1>
+        <p class="errors"><%= flash[:errors].join("<br>").html_safe if flash[:errors] %></p>
         <input type="text" name="user[username]" placeholder="Pick a username">
         <br>
         <input type="password" name="user[password]" placeholder="Pick a password">
