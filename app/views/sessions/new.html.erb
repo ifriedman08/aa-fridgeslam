@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New User</title>
+
+    <style>
+      canvas {
+        position:fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        margin:0;
+        box-sizing:border-box;
+        width:100%;
+        height:100%;
+      }
+
+      input {
+        padding: 4px;
+        margin: 4px auto;
+        color: darkgrey;
+        text-align: center;
+        font-size: 20px;
+        font-family: courier;
+        height: 30px;
+        width: 350px;
+        border-radius: 5px;
+      }
+
+      .button{
+        color: white;
+        padding: 15px;
+        background-color: green;
+        text-align: center;
+        font-size: 20px;
+        font-family: courier;
+        height: 50px;
+        width: 160px;
+        vertical-align: middle;
+      }
+
+      #guest{
+        background-color: purple;
+      }
+
+      div.container {
+        width: 500px;
+        top: 45%;
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      form {
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px black;
+        font-family: courier;
+        background-color: cyan;
+        text-align: center;
+        width:  100%;
+        padding: 15px;
+        box-sizing: border-box;
+        top: 40%;*/
+        border: 3px solid black;
+      }
+
+      ::-webkit-input-placeholder {
+          color: grey;
+      }
+
+      .slam-logo {
+        width: 100%;
+        z-index: 1;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <canvas id="myCanvas">
+
+    </canvas>
+    <div class="container">
+      <img src="/assets/slam-logo.png" class="slam-logo" alt="" />
+      <form class="new-user-form" action="/users/" method="post">
+        <%= auth_token_input %>
+        <h1>Sign In</h1>
+        <input type="text" name="user[username]" placeholder="Pick a username">
+        <br>
+        <input type="password" name="user[password]" placeholder="Pick a password">
+        <br>
+        <input type="submit" class="button" id="submit" name="name" value="Submit">
+        or
+        <input type="submit" class="button" id="guest" name="name" value="Guest Login">
+        <br>
+        <br>
+        <a href="<%= new_user_url %>">Not registered? Sign up here!</a>
+      </form>
+    </div>
+
+    <script type="text/javascript">
+    (function () {
+      if (typeof Circles === "undefined") {
+        window.Circles = {};
+      }
+
+      var Circle = Circles.Circle = function (centerX, centerY, radius, color) {
+        this.centerX = centerX;
+        this.centerY = centerY;
+        this.radius = radius;
+        this.color = color;
+        // this.fillText('word', Math.random() * 300, Math.random() * 300) ;
+      };
+
+
+      Circle.randomCircle = function (maxX, maxY, numCircles) {
+        var radius = (Math.random() * 180) + 30
+        return new Circle(
+          maxX * Math.random(),
+          maxY + radius + 10,
+          radius,
+          Circle.randomColor()
+        );
+          debugger
+      };
+
+      var HEX_DIGITS = "0123456789ABCDEF"
+      Circle.randomColor = function () {
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += HEX_DIGITS[Math.floor((Math.random() * 16))];
+        }
+
+        return color;
+      };
+
+      Circle.prototype.moveRandom = function (maxX, maxY) {
+        var dy = - (Math.random() * 0.1);
+        this.centerY = (this.centerY + (dy * this.radius) * 0.1);
+      };
+
+      Circle.prototype.render = function (ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+
+        ctx.arc(
+          this.centerX,
+          this.centerY,
+          this.radius,
+          0,
+          2 * Math.PI,
+          false
+        );
+
+        ctx.fill();
+      };
+        var Game = Circles.Game = function (xDim, yDim) {
+          this.xDim = xDim;
+          this.yDim = yDim;
+
+          this.circles = [];
+
+          window.setInterval((function () {
+            this.circles.push(
+              Circles.Circle.randomCircle(xDim, yDim, 1)
+            );
+        }).bind(this), 500)
+        };
+        Game.NUM_CIRCLES = 4000;
+        Game.prototype.render = function (ctx) {
+          ctx.clearRect(0, 0, this.xDim, this.yDim);
+
+          this.circles.forEach(function (circle) {
+            if (circle.centerY < - (circle.radius)) {
+              this.circles.splice(this.circles.indexOf(circle), 1);
+            }
+            circle.render(ctx);
+          }.bind(this));
+        };
+
+        Game.prototype.moveCircles = function () {
+          var game = this;
+          this.circles.forEach(function (circle) {
+            circle.moveRandom(game.xDim, game.yDim);
+          });
+        };
+
+        Game.prototype.start = function (canvasEl) {
+          // get a 2d canvas drawing context. The canvas API lets us call
+          // a `getContext` method on a canvas DOM element.
+          var ctx = canvasEl.getContext("2d");
+
+          window.setInterval((function () {
+            this.moveCircles();
+            this.render(ctx);
+          }).bind(this), 1000 / 200);
+        };
+      })();
+
+      var canvasEl = document.getElementsByTagName("canvas")[0];
+      canvasEl.height = window.innerHeight;
+      canvasEl.width = window.innerWidth;
+      new Circles.Game(
+        canvasEl.width,
+        canvasEl.height
+      ).start(canvasEl);
+    </script>
+  </body>
+</html>
