@@ -16,6 +16,7 @@ User.create!(
     email: 'bodie123@aa.io',
     password_digest: "$2a$10$ZfXPB/AYKdCQE0czhzNpweLmxYdNvSs3XlUYhgGRkE9tAG.4T9XfW")
 
-SoloSlam.create!(user_id: 1, body: ['this', 'is', 'the', 'first', 'super', 'duper', 'poem'], title: 'poem#1')
-SoloSlam.create!(user_id: 1, body: ['this', 'is', 'the', 'second', 'poem', '.', 'Holla', ',', 'Bollah'], title: 'titlelesst')
-SoloSlam.create!(user_id: 2, body: ['this', 'is', 'the', 'third', 'poem', 'boogie', 'woogie'], title: 'boogie boogie')
+Slam.create!(user_id: 1, body: ['this', 'is', 'the', 'first', 'super', 'duper', 'poem'], title: 'poem#1', mode: 'solo')
+Slam.create!(user_id: 1, body: ['this', 'is', 'the', 'second', 'poem', '.', 'Holla', ',', 'Bollah'], title: 'titlelesst', mode: 'solo')
+Slam.create!(user_id: 2, body: ['this', 'is', 'the', 'third', 'poem', 'boogie', 'woogie'], title: 'boogie boogie', mode: 'solo')
+Slam.create!(user_id: 2, body: ['this', 'iwdcdjbs', 'wdjwlecbthe', 'third', 'poem', 'boogie', 'woogie'], title: 'bowowowowow', mode: 'solo')
