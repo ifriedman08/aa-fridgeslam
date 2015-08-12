@@ -1,12 +1,7 @@
 class Like < ActiveRecord::Base
 
-  validates :user, :likeable, presence: true
-  validates :like, uniqueness: { scope: [:user, :likeable] }
-
-  # def slam_type
-  #   puts self.class
-  #   byebug
-  # end
+  validates :user, :slam_type, :slam_id, presence: true
+  validates :user_id, uniqueness: { scope: [:slam_type, :slam_id] }
 
   belongs_to(
     :likeable,

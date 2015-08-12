@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token!
 
   has_many(
-    :solo_slams
+    :solo_slams,
+    dependent: :destroy
   )
 
   def self.find_by_credentials(username, password)

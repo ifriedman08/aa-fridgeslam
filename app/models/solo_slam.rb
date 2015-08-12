@@ -10,7 +10,8 @@ class SoloSlam < ActiveRecord::Base
 
   has_many(
     :likes,
-    as: :likeable
+    as: :likeable,
+    dependent: :destroy
   )
 
   def add_like
