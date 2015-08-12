@@ -8,6 +8,11 @@ class SoloSlam < ActiveRecord::Base
     :user
   )
 
+  has_many(
+    :likes,
+    as: :likeable
+  )
+
   def add_like
     self.likes += 1
   end
