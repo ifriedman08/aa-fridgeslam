@@ -5,19 +5,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    if user_params[:password] != user_params[:password_confirmation]
-      params[:user].delete('password_confirmation')
-      @user = User.new(user_params)
+    if params[:user][:password] != params[:user][:password_confirmation]
       flash.now[:errors] = ['Passwords must match']
+      @user = User.new(user_params)
       render :new
-
     else
-      params[:user].delete('password_confirmation')
       @user = User.new(user_params)
 
       if @user.save
         sign_in(@user)
-        redirect_to root_url
+        render json: @user.solo_slams
       else
         flash.now[:errors] = @user.errors.full_messages
         render :new
@@ -26,6 +23,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :username, :password, :password_confirmation)
+    params.require(:user).permit(:email, :username, :password)
   end
 end

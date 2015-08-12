@@ -1,10 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :require_sign_in, only: [:root]
   def root
-    # fail
-    if signed_in?
-      render :root
-    else
-      redirect_to new_session_url
-    end
+    render :root
   end
 end

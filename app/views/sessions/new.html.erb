@@ -5,6 +5,33 @@
     <title>New User</title>
 
     <style>
+    @-webkit-keyframes hvr-pulse-grow {
+      to {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes hvr-pulse-grow {
+      to {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+
+    img:hover {
+      -webkit-animation-name: hvr-pulse-grow;
+      animation-name: hvr-pulse-grow;
+      -webkit-animation-duration: 0.3s;
+      animation-duration: 0.3s;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate;
+      animation-direction: alternate;
+    }
+
       canvas {
         position:fixed;
         top:0;
@@ -36,7 +63,7 @@
       .button{
         color: white;
         padding: 15px;
-        background-color: green;
+        background-color: rgb(7, 45, 64);
         text-align: center;
         font-size: 20px;
         font-family: courier;
@@ -47,15 +74,7 @@
       }
 
       .button:hover {
-        background-color: rgba(12, 246, 29, 0.91);
-      }
-
-      #guest{
-        background-color: purple;
-      }
-
-      #guest:hover{
-        background-color: rgb(233, 65, 242);
+        background-color: rgb(93, 143, 230);
       }
 
       div.container {
@@ -167,7 +186,7 @@
         <br>
         <input type="password" name="user[password]" placeholder="Pick a password">
         <br>
-        <input type="submit" class="button" id="submit" name="name" value="Submit">
+        <input type="submit" class="button" id="submit" name="name" value="Log In">
         or
         <input type="submit" class="button" id="guest" name="name" value="Guest Login">
         <br>
@@ -223,23 +242,35 @@
         window.Circles = {};
       }
 
-      var Circle = Circles.Circle = function (centerX, centerY, radius, color) {
+      var Circle = Circles.Circle = function (centerX, centerY, radius, color, word, font) {
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
         this.color = color;
+        this.word = word;
+        this.font = font;
       };
 
 
-      Circle.randomCircle = function (maxX, maxY, numCircles) {
-        var radius = (Math.random() * 200) + 30
+      Circle.randomCircle = function (maxX, maxY) {
+
+        // var fonts = [
+        //   'courier',
+        //   'verdana',
+        //   'georgia',
+        // ];
+        // var font = fonts[Math.floor(Math.random() * fonts.length)]
+        var font = 'courier';
+        var word = dictionary[Math.floor(Math.random()*dictionary.length)];
+        var radius = (15 * word.length);
         return new Circle(
           maxX * Math.random(),
           maxY + radius,
           radius,
-          Circle.randomColor()
+          Circle.randomColor(),
+          word,
+          font
         );
-          debugger
       };
 
       var HEX_DIGITS = "0123456789ABCDEF"
@@ -254,7 +285,7 @@
 
       Circle.prototype.moveRandom = function (maxX, maxY) {
         var dy = - (Math.random() * 0.1);
-        this.centerY = (this.centerY + (dy * this.radius) * 0.1);
+        this.centerY = (this.centerY + (dy * this.radius) * 0.2);
       };
 
       Circle.prototype.render = function (ctx) {
@@ -271,6 +302,10 @@
         );
 
         ctx.fill();
+        ctx.fillStyle = "white";
+
+        ctx.font = "35px " + this.font;
+        ctx.fillText(this.word, this.centerX - (this.word.length * 10), this.centerY + 10)
       };
         var Game = Circles.Game = function (xDim, yDim) {
           this.xDim = xDim;
@@ -282,9 +317,8 @@
             this.circles.push(
               Circles.Circle.randomCircle(xDim, yDim, 1)
             );
-        }).bind(this), 300)
+        }).bind(this), 1000)
         };
-        Game.NUM_CIRCLES = 4000;
         Game.prototype.render = function (ctx) {
           ctx.clearRect(0, 0, this.xDim, this.yDim);
 
@@ -311,7 +345,7 @@
           window.setInterval((function () {
             this.moveCircles();
             this.render(ctx);
-          }).bind(this), 1000 / 200);
+          }).bind(this), 1000 / 70);
         };
       })();
 
