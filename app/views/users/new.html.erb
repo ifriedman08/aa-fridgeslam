@@ -13,8 +13,12 @@
         left:0;
         margin:0;
         box-sizing:border-box;
-        width:100%;
-        height:100%;
+        width: 1500px;
+        height: auto;
+      }
+
+      form a {
+        text-decoration: none;
       }
 
       input {
@@ -29,7 +33,7 @@
         border-radius: 5px;
       }
 
-      .button{
+      .button {
         color: white;
         padding: 15px;
         background-color: green;
@@ -39,10 +43,19 @@
         height: 50px;
         width: 160px;
         vertical-align: middle;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: rgba(12, 246, 29, 0.91);
       }
 
       #guest{
         background-color: purple;
+      }
+
+      #guest:hover{
+        background-color: rgb(233, 65, 242);
       }
 
       div.container {
@@ -82,6 +95,59 @@
         z-index: 1;
       }
 
+      .modalDialog {
+          position: fixed;
+          font-family: courier;
+          text-align: center;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.8);
+          z-index: 99999;
+          opacity:0;
+          /*-webkit-transition: opacity 400ms ease-in;*/
+          -moz-transition: opacity 400ms ease-in;
+          transition: opacity 400ms ease-in;
+          pointer-events: none;
+      }
+      .modalDialog:target {
+          opacity:1;
+          pointer-events: auto;
+      }
+      .modalDialog > div {
+          width: 600px;
+          position: relative;
+          margin: 10% auto;
+          padding: 5px 20px 13px 20px;
+          border-radius: 10px;
+          background: #fff;
+          background: -moz-linear-gradient(#fff, #999);
+          background: -webkit-linear-gradient(#fff, #999);
+          background: -o-linear-gradient(#fff, #999);
+      }
+      .close {
+          background: #606061;
+          color: #FFFFFF;
+          line-height: 25px;
+          position: absolute;
+          right: -12px;
+          text-align: center;
+          top: -10px;
+          width: 24px;
+          text-decoration: none;
+          font-weight: bold;
+          -webkit-border-radius: 12px;
+          -moz-border-radius: 12px;
+          border-radius: 12px;
+          -moz-box-shadow: 1px 1px 3px #000;
+          -webkit-box-shadow: 1px 1px 3px #000;
+          box-shadow: 1px 1px 3px #000;
+      }
+      .close:hover {
+          background: #00d9ff;
+      }
+
     </style>
 
   </head>
@@ -90,7 +156,9 @@
 
     </canvas>
     <div class="container">
-      <img src="/assets/slam-logo.png" class="slam-logo" alt="" />
+      <a href="#openModal">
+        <img src="/assets/slam-logo.png" class="slam-logo" alt="" />
+      </a>
       <form class="new-user-form" action="/users/" method="post">
         <%= auth_token_input %>
         <h1>New User Sign Up</h1>
@@ -112,7 +180,47 @@
         <a href=" <%= new_session_url %> ">Already registered? Sign in here!</a>
       </form>
     </div>
-
+    <div id="openModal" class="modalDialog">
+      <div>	<a href="#close" title="Close" class="close">X</a>
+        <h2>About FridgeSlam</h2>
+        <p>
+          Write poems.
+          <br>
+          One word at a time.
+          <br>
+          Alone or with friends.
+        </p>
+        <h3>How does it work?</h3>
+        <p>
+          Easy:
+          <br>
+          This first step is signing up.
+          <br>
+          Invite your friends!
+        </p>
+        <h3>Solo Slams:</h3>
+        <p>
+          Click on a word from the generated options
+          as they appear to write your masterpiece.
+          <br>
+          When you’re done, give it a title.
+          <br>
+          Submit, share, like.
+        </p>
+        <h3>Group Slams:</h3>
+        <p>
+          Invite or get invited by friends to a Group Slam.
+          <br>
+          The initiator picks the title.
+          <br>
+          When it’s your turn, type in a word and add to the Slam.
+          <br>
+          When it’s done, you can see who put which words.
+          <br>
+          Submit, share, like.
+        </p>
+      </div>
+    </div>
     <script type="text/javascript">
     (function () {
       if (typeof Circles === "undefined") {
@@ -124,19 +232,17 @@
         this.centerY = centerY;
         this.radius = radius;
         this.color = color;
-        // this.fillText('word', Math.random() * 300, Math.random() * 300) ;
       };
 
 
-      Circle.randomCircle = function (maxX, maxY, numCircles) {
-        var radius = (Math.random() * 180) + 30
+      Circle.randomCircle = function (maxX, maxY) {
+        var radius = (Math.random() * 200) + 30
         return new Circle(
           maxX * Math.random(),
-          maxY + radius + 10,
+          maxY + radius,
           radius,
           Circle.randomColor()
         );
-          debugger
       };
 
       var HEX_DIGITS = "0123456789ABCDEF"
@@ -179,7 +285,7 @@
             this.circles.push(
               Circles.Circle.randomCircle(xDim, yDim, 1)
             );
-        }).bind(this), 500)
+        }).bind(this), 300)
         };
         Game.prototype.render = function (ctx) {
           ctx.clearRect(0, 0, this.xDim, this.yDim);
