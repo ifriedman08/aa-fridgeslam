@@ -1,0 +1,13 @@
+<div class='slams-index-title'>
+  <h3>Slams</h3>
+</div>
+
+<ul class='slams'>
+  <% slams.each(function (slam) { %>
+    <li>
+      <a href="#/slams/<%= slam.id %>">
+        <%= slam.escape("title") %>
+      </a>
+    </li>
+  <% }); %>
+</ul>

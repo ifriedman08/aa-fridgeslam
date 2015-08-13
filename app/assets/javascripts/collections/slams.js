@@ -1,4 +1,4 @@
-Fridgeslam.Models.Board = Backbone.Model.extend({
+Fridgeslam.Collections.Slams = Backbone.Collection.extend({
   url: 'api/slams',
   model: Fridgeslam.Models.Slam
 });

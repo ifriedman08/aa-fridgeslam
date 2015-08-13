@@ -1,10 +1,7 @@
 Fridgeslam.Routers.Router = Backbone.Router.extend({
   initialize: function() {
-    // var dropDownView = new TrelloClone.Views.DropDownView({
-    //   collection: TrelloClone.Collections.boards
-    // });
-    // $('#add-dropdown').append(dropDownView.render().$el);
     this.$rootEl = $('#content');
+    this.collection = new Fridgeslam.Collections.Slams;
   },
 
   routes: {
@@ -13,7 +10,12 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   slamsIndex: function () {
-    alert('slams index');
+    this.collection.fetch();
+    var indexView = new Fridgeslam.Views.SlamsIndex({
+      collection: this.collection
+    });
+
+    this._swapView(indexView);
   },
 
   // boardShow: function (id) {
