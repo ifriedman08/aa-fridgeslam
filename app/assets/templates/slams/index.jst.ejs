@@ -7,6 +7,9 @@
     <li>
       <a href="#/slams/<%= slam.id %>">
         <%= slam.escape("title") %>
+        <%= slam.attributes.user.username %>
+        <%= slam.escape("mode") %>
+        <%= slam.escape("likes") %>
       </a>
     </li>
   <% }); %>

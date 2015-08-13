@@ -7,7 +7,11 @@ class Api::SlamsController < ApplicationController
   end
 
   def index
-    @slams = Slam.all.reject{|slam| slam.pending}
+
+    @new_slams = Slam.where(pending: false).order(created_at: :desc).limit(25).includes(:user, :likes)
+    @top_slams = Slam.where(pending: false).joins(:likes).group('slams.id').order("COUNT(likes.id) DESC")
+    @pending_slams = Slam.where(pending: true, user_id: current_user.id)
+
     render :index
   end
 

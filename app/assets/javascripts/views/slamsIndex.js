@@ -8,7 +8,6 @@ Fridgeslam.Views.SlamsIndex = Backbone.View.extend({
   },
 
   render: function () {
-    debugger
     var that = this;
     var content = this.template({
       slams: that.collection

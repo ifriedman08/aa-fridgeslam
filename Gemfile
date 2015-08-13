@@ -28,6 +28,8 @@ gem 'bootstrap-sass'
 gem 'newrelic_rpm'
 gem 'jquery-ui-rails'
 gem 'backbone-on-rails'
+gem 'faker'
+gem 'literate_randomizer'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

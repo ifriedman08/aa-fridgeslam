@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(password_digest).is_password?(password)
   end
 
+  def pending_slams
+    self.slams.select{|slam| slam.pending}
+  end
+
   def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64(16)
     self.save

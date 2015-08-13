@@ -1,12 +1,16 @@
 class Slam < ActiveRecord::Base
 
-  validates :email, :username, :body, :mode, :likes, :initiator, presence: true
+  validates :title, :body, :mode, :user, presence: true
 
   belongs_to(
-    :initiator,
+    :user,
     primary_key: :id,
     foreign_key: :user_id,
     class_name: 'User'
+  )
+
+  has_many(
+    :likes
   )
 
 end

@@ -1,12 +1,12 @@
 Fridgeslam.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#content');
-    this.collection = new Fridgeslam.Collections.Slams;
+    this.collection = new Fridgeslam.Collections.Slams();
   },
 
   routes: {
-    '': 'slamsIndex'
-    // 'solo_slams/:id': 'boardShow'
+    '': 'slamsIndex',
+    'solo_slams/:id': 'boardShow'
   },
 
   slamsIndex: function () {
@@ -18,15 +18,15 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
     this._swapView(indexView);
   },
 
-  // boardShow: function (id) {
-  //   var board = TrelloClone.Collections.boards.getOrFetch(id);
-  //
-  //   var view = new TrelloClone.Views.BoardShow({
-  //     model: board
-  //   });
-  //
-  //   this._swapView(view);
-  // },
+  boardShow: function (id) {
+    var board = Fridgeslam.Collections.boards.getOrFetch(id);
+
+    var view = new Fridgeslam.Views.BoardShow({
+      model: board
+    });
+
+    this._swapView(view);
+  },
 
   _swapView: function (view) {
     this.currentView && this.currentView.remove();

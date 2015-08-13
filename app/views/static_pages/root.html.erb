@@ -1,6 +1,17 @@
+<div id="navbar"></div>
 <h1>Root Page</h1>
 <div id="content"></div>
 
 <script type="text/javascript">
+
+
+  $(function () {
+    Fridgeslam.CURRENT_USER = {
+    username: "<%= current_user.username %>",
+    pendingSlams: "<%= current_user.pending_slams.length %>"
+    }
+  });
+
   $(Fridgeslam.initialize);
+
 </script>
