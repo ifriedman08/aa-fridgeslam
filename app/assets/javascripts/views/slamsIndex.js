@@ -1,7 +1,7 @@
 Fridgeslam.Views.SlamsIndex = Backbone.View.extend({
   template: JST['slams/index'],
 
-  className: 'boards-index',
+  className: 'slams-index',
 
   initialize: function () {
     this.listenTo(this.collection, 'sync', this.render);

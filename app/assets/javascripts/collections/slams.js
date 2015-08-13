@@ -1,5 +1,5 @@
 Fridgeslam.Collections.Slams = Backbone.Collection.extend({
-  url: 'api/slams',
+  url: '/api/slams',
   model: Fridgeslam.Models.Slam,
 
   getOrFetch: function (id) {

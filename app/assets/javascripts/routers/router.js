@@ -5,27 +5,32 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'slamsIndex',
-    'solo_slams/:id': 'boardShow'
+    '': 'dashboard',
+    'slams/:id': 'boardShow'
+  },
+
+  dashboard: function () {
+    this.collection.fetch({
+      data: {order: 'pending'}
+    });
+
+    var dashboardView = new Fridgeslam.Views.dashboardView({
+      collection: this.collection
+    });
+
   },
 
   slamsIndex: function () {
-    this.collection.fetch();
+    // debugger;
+    this.collection.fetch({
+      data: {order: 'top'}
+    });
+
     var indexView = new Fridgeslam.Views.SlamsIndex({
       collection: this.collection
     });
 
     this._swapView(indexView);
-  },
-
-  boardShow: function (id) {
-    var board = Fridgeslam.Collections.boards.getOrFetch(id);
-
-    var view = new Fridgeslam.Views.BoardShow({
-      model: board
-    });
-
-    this._swapView(view);
   },
 
   _swapView: function (view) {
