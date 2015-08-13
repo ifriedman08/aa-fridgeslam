@@ -7,7 +7,7 @@ class Api::SlamsController < ApplicationController
   end
 
   def index
-    @slams = (SoloSlam.all + GroupSlam.all).reject{|slam| slam.pending}
+    @slams = Slam.all.reject{|slam| slam.pending}
     render :index
   end
 

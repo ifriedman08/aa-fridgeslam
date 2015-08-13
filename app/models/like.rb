@@ -4,8 +4,7 @@ class Like < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: [:slam_type, :slam_id] }
 
   belongs_to(
-    :likeable,
-    polymorphic: true
+    :slam,
   )
 
   belongs_to(

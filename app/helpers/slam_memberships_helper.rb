@@ -1,0 +1,2 @@
+module SlamMembershipsHelper
+end

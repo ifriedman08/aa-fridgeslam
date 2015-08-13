@@ -16,7 +16,18 @@ User.create!(
     email: 'bodie123@aa.io',
     password_digest: "$2a$10$ZfXPB/AYKdCQE0czhzNpweLmxYdNvSs3XlUYhgGRkE9tAG.4T9XfW")
 
-Slam.create!(user_id: 1, body: ['this', 'is', 'the', 'first', 'super', 'duper', 'poem'], title: 'poem#1', mode: 'solo')
-Slam.create!(user_id: 1, body: ['this', 'is', 'the', 'second', 'poem', '.', 'Holla', ',', 'Bollah'], title: 'titlelesst', mode: 'solo')
+  User.create!(
+    username: 'martha123',
+    email: 'martha123@aa.io',
+    password_digest: "$2a$10$6ArceSoi0hupWpiLPZ1emeUh.asQZIAOGC.GRy5k9T4tlZeaTzHjK")
+
+Slam.create!(user_id: 1, body: ['this', 'is', 'the', 'first', 'super', 'duper', 'poem'], title: 'poem#1', mode: 'solo', pending: false)
+Slam.create!(user_id: 1, body: ['this', 'is', 'the', 'secodvevnd', 'pervervoem', '.', 'Hoervlla', ',', 'Bollah'], title: 'titlelesst', mode: 'solo', pending: false)
+Slam.create!(user_id: 1, body: ['this', 'is', 'the', 'secervervond', 'poem', '.', 'Holla', ',', 'Bollah'], title: 'titlelesst', mode: 'solo')
+Slam.create!(user_id: 1, body: ['this', 'iervevs', 'the', 'second', 'poem', '.', 'Holla', ',', 'Bo45345llah'], title: 'titlelesst', mode: 'solo')
 Slam.create!(user_id: 2, body: ['this', 'is', 'the', 'third', 'poem', 'boogie', 'woogie'], title: 'boogie boogie', mode: 'solo')
+Slam.create!(user_id: 2, body: ['this', 'iwdcdjbs', 'wdjwlecbthe', 'third', 'poe3453445m', 'boogie', 'woogie'], title: 'bowowowowow', mode: 'solo', pending: false)
 Slam.create!(user_id: 2, body: ['this', 'iwdcdjbs', 'wdjwlecbthe', 'third', 'poem', 'boogie', 'woogie'], title: 'bowowowowow', mode: 'solo')
+Slam.create!(user_id: 3, body: ['tvrqervqerhis', 'iwdcdjeqqvqbs', 'wdjwlecbthe', 'third', 'poem', 'boogie', 'woogie'], title: 'bowowowowow', mode: 'solo')
+Slam.create!(user_id: 3, body: ['this', 'iwdcdjbs', 'wdjwlec25345bthe', 'third', 'poem', 'boogie', 'woogie'], title: 'bowowowowow', mode: 'solo')
+Slam.create!(user_id: 3, body: ['this', 'iwdcdjbs', 'wdjwl345345ecbthe', 'third', 'po3453453em', 'boogie', 'woogie'], title: 'bowowowowow', mode: 'solo', pending: false)
