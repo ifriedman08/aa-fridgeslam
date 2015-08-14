@@ -1,8 +1,16 @@
+<div class="nav-bar">
+    <a href="/#/"><img src="assets/white-slam-logo.png" alt="" /></a>
+
+    <br><%= current_user.username %>'s profile
+
+    <div class="logout-button"><%= button_to "LOG OUT", session_url, :method => :delete %></div>
+  </div>
+</div>
+
 <canvas id="myCanvas">
 
 </canvas>
-<div id="navbar"></div>
-<h1>Root Page</h1>
+
 <div id="content"></div>
 
 <script type="text/javascript">
@@ -11,6 +19,7 @@
   $(function () {
     Fridgeslam.CURRENT_USER = {
     username: "<%= current_user.username %>",
+    id: "<%= current_user.id %>",
     pendingSlams: "<%= current_user.pending_slams.length %>"
     }
   });
@@ -36,12 +45,6 @@
 
   Circle.randomCircle = function (maxX, maxY) {
 
-    // var fonts = [
-    //   'courier',
-    //   'verdana',
-    //   'georgia',
-    // ];
-    // var font = fonts[Math.floor(Math.random() * fonts.length)]
     var font = 'courier';
     var word = dictionary[Math.floor(Math.random()*dictionary.length)];
     var radius = (15 * word.length);
@@ -120,8 +123,7 @@
     };
 
     Game.prototype.start = function (canvasEl) {
-      // get a 2d canvas drawing context. The canvas API lets us call
-      // a `getContext` method on a canvas DOM element.
+
       var ctx = canvasEl.getContext("2d");
 
       window.setInterval((function () {

@@ -33,6 +33,10 @@
     }
 
       canvas {
+        background-image: url('/assets/sky.jpg');
+        background-size:   cover;
+        background-repeat: no-repeat;
+        background-position: center center;
         position:fixed;
         top:0;
         right:0;
@@ -345,7 +349,7 @@
           window.setInterval((function () {
             this.moveCircles();
             this.render(ctx);
-          }).bind(this), 1000 / 200);
+          }).bind(this), 1000 / 170);
         };
       })();
 

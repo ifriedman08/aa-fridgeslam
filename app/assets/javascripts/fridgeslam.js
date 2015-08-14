@@ -8,12 +8,8 @@ window.Fridgeslam = {
     Backbone.history.start();
 
     var pending = Fridgeslam.CURRENT_USER.pendingSlams;
-
-    var nav = new Fridgeslam.Views.NavShow({
-      router: router,
-      collection: pending
-    });
-
-    $("#navbar").html(nav.render().$el);
+    // var fs = require('fs');
+    // var words = fs.readFileSync('/assets/wordlist.txt').toString().split("\n");
+    // console.log(words);
   }
 };

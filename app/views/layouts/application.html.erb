@@ -6,8 +6,10 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <style media="screen">
+
   canvas {
     position:fixed;
+    z-index: -200;
     top:0;
     right:0;
     bottom:0;
@@ -17,6 +19,7 @@
     width: 1500;
     height:auto;
   }
+
   </style>
 </head>
 <body>

@@ -6,21 +6,53 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
 
   routes: {
     '': 'dashboard',
+    'top': 'topIndex',
+    'new': 'newIndex',
+    'pending': 'pendingIndex',
+    'slams/new-solo': 'startSoloSlam',
+    'slams/new-group': 'startGroupSlam',
     'slams/:id': 'boardShow'
   },
 
+  startSoloSlam: function () {
+    var newSlam = new Fridgeslam.Models.Slam();
+    var newSlamForm = new Fridgeslam.Views.SlamsNew({
+      model: newSlam
+    });
+    this._swapView(newSlamForm);
+  },
+
   dashboard: function () {
+    var dashView = new Fridgeslam.Views.DashView();
+    this._swapView(dashView);
+
+  },
+
+  pendingIndex: function () {
     this.collection.fetch({
       data: {order: 'pending'}
     });
 
-    var dashboardView = new Fridgeslam.Views.dashboardView({
+    var indexView = new Fridgeslam.Views.SlamsIndex({
       collection: this.collection
     });
 
+    this._swapView(indexView);
   },
 
-  slamsIndex: function () {
+  newIndex: function () {
+    this.collection.fetch({
+      data: {order: 'new'}
+    });
+
+    var indexView = new Fridgeslam.Views.SlamsIndex({
+      collection: this.collection
+    });
+
+    this._swapView(indexView);
+  },
+
+  topIndex: function () {
     // debugger;
     this.collection.fetch({
       data: {order: 'top'}

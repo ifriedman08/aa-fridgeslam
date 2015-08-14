@@ -33,6 +33,10 @@
       }
 
       canvas {
+        background-image: url('/assets/sky.jpg');
+        background-size:   cover;
+        background-repeat: no-repeat;
+        background-position: center center;
         position:fixed;
         top:0;
         right:0;
@@ -164,7 +168,7 @@
           box-shadow: 1px 1px 3px #000;
       }
       .close:hover {
-          background: #00d9ff;
+          background: #be1212;
       }
 
     </style>
@@ -200,7 +204,7 @@
       </form>
     </div>
     <div id="openModal" class="modalDialog">
-      <div>	<a href="#close" title="Close" class="close">X</a>
+      <div>	<a href="#close" title="Close" class="close">&times;</a>
         <h2>About FridgeSlam</h2>
         <p>
           Write poems.
@@ -259,12 +263,6 @@
 
       Circle.randomCircle = function (maxX, maxY) {
 
-        // var fonts = [
-        //   'courier',
-        //   'verdana',
-        //   'georgia',
-        // ];
-        // var font = fonts[Math.floor(Math.random() * fonts.length)]
         var font = 'courier';
         var word = dictionary[Math.floor(Math.random()*dictionary.length)];
         var radius = (15 * word.length);
@@ -350,7 +348,7 @@
           window.setInterval((function () {
             this.moveCircles();
             this.render(ctx);
-          }).bind(this), 1000 / 70);
+          }).bind(this), 1000 / 170);
         };
       })();
 
