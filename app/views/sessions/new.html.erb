@@ -44,7 +44,6 @@
         left:0;
         margin:0;
         box-sizing:border-box;
-        width: 1500;
         height:auto;
       }
 
@@ -246,6 +245,13 @@
         window.Circles = {};
       }
 
+      // $.ajax({
+      //   url: 'api/dictionary',
+      //   success: function (response) {
+      //     window.dictionary = response;
+      //   }
+      // });
+
       var Circle = Circles.Circle = function (centerX, centerY, radius, color, word, font) {
         this.centerX = centerX;
         this.centerY = centerY;
@@ -265,6 +271,14 @@
         // ];
         // var font = fonts[Math.floor(Math.random() * fonts.length)]
         var font = 'courier';
+
+        $.ajax({
+          url: 'dictionary',
+          success: function (response) {
+            window.dictionary = response;
+          }
+        });
+
         var word = dictionary[Math.floor(Math.random()*dictionary.length)];
         var radius = (15 * word.length);
         return new Circle(

@@ -3,7 +3,13 @@ class Api::SlamsController < ApplicationController
   end
 
   def create
-
+    @slam = Slam.new(slam_params)
+    if @slam.save
+      render :show
+    else
+      flash.now[:errors] = @slam.errors.full_messages
+      redirect_to '#/slams/new-solo'
+    end
   end
 
   def index
@@ -28,12 +34,16 @@ class Api::SlamsController < ApplicationController
 
   def show
     @slam = SoloSlam.find(params[:id])
-    render "slams/show"
+    render :show
   end
 
   def destroy
     @slam = SoloSlam.find(params[:id])
     @slam.destroy
-    render "slams/index"
+    render :index
+  end
+
+  def slam_params
+    params.require(:slam).permit(:title, :body)
   end
 end

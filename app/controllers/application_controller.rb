@@ -28,5 +28,5 @@ class ApplicationController < ActionController::Base
   end
 
   WORDS = File.readlines('/Users/Grawf/Documents/fridgeslam/app/assets/wordlist.txt')
-  WORDS.map! {|word| word[0...word.length-1] + ' '}
+  WORDS.map! {|word| word[0...word.length-1]}
 end

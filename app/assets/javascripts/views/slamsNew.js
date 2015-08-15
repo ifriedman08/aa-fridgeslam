@@ -2,20 +2,45 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
   template: JST['slams/new'],
 
   initialize: function () {
+    this.word_array = [];
     this.listenTo(this.model, 'sync', this.render);
     this.refreshWordList();
   },
 
   events: {
     'click li': 'addWord',
-    'click .post-slam': 'saveSlam',
-    'click .save-slam': 'postSlam'
+    'click input.post-slam': 'postSlam',
+    'click input.save-slam': 'saveSlam'
+  },
+
+  saveSlam: function (event) {
+    event.preventDefault();
+    var attrs = {
+      title: $('input.slam-title').val(),
+      body: $('div.slam-preview').html().split(' '),
+    };
+    this.model.save(attrs, {
+      success: function () {
+        alert('saved!');
+      },
+      error: function () {
+        alert('errors');
+      }
+    });
+    // debugger;
   },
 
   addWord: function (event) {
     event.preventDefault();
     $target = $(event.currentTarget);
-    $('div.slam-preview').append($target.html());
+    // debugger;
+    if ($target.attr('class') === "new-line") {
+      var word = "<br>";
+    } else {
+      var word = $target.html();
+    }
+    this.word_array.push(word);
+    $('div.slam-preview').html(this.word_array.join(' '));
     this.refreshWordList();
   },
 
@@ -31,7 +56,7 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
   render: function () {
     var that = this;
     var content = this.template({
-      slams: that.model
+      slam: that.model
     });
 
     this.$el.html(content);

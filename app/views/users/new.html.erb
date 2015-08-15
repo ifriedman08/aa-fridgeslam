@@ -34,7 +34,7 @@
 
       canvas {
         background-image: url('/assets/sky.jpg');
-        background-size:   cover;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
         position:fixed;
@@ -44,7 +44,6 @@
         left:0;
         margin:0;
         box-sizing:border-box;
-        width: 1500px;
         height: auto;
       }
 
@@ -250,6 +249,13 @@
       if (typeof Circles === "undefined") {
         window.Circles = {};
       }
+
+      $.ajax({
+        url: '2/dictionary',
+        success: function (response) {
+          window.dictionary = response;
+        }
+      });
 
       var Circle = Circles.Circle = function (centerX, centerY, radius, color, word, font) {
         this.centerX = centerX;
