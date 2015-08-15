@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  include Amistad::FriendModel
+
   validates :password_digest, :email, :session_token, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :email, :username, uniqueness: true
@@ -10,6 +12,20 @@ class User < ActiveRecord::Base
 
   has_many(
     :slams
+  )
+
+  has_many(
+    :friends,
+    through: :id,
+    foreign_key: :user_1,
+    class_name: 'Friendship'
+  )
+
+  has_many(
+    :friendships,
+    primary_key: :id,
+    foreign_key: :user_1,
+    class_name: 'Friendship'
   )
 
   def self.find_by_credentials(username, password)

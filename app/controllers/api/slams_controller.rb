@@ -25,11 +25,6 @@ class Api::SlamsController < ApplicationController
     end
 
     render :index
-    # @top_slams = Slam.where(pending: false).order(created_at: :desc).limit(25).includes(:user, :likes)
-    # @new_slams = Slam.where(pending: false).joins(:likes).group('slams.id').order("COUNT(likes.id) DESC")
-    # @panding_slams = Slam.where(pending: true, user_id: current_user.id)
-    #
-    # render json: [@top_slams, @new_slams, @pending_slams]
   end
 
   def show

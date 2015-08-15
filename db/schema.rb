@@ -11,27 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813181023) do
+ActiveRecord::Schema.define(version: 20150815232559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "user1",      null: false
-    t.integer  "user2",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.integer "blocker_id"
+    t.boolean "pending",       default: true
   end
 
-  create_table "group_slams", force: :cascade do |t|
-    t.integer  "contributor_ids", default: [],   null: false, array: true
-    t.string   "body",            default: [],   null: false, array: true
-    t.string   "title",                          null: false
-    t.boolean  "pending",         default: true, null: false
-    t.integer  "likes",           default: 0,    null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
+  add_index "friendships", ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true, using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "slam_id",    null: false
@@ -53,16 +45,6 @@ ActiveRecord::Schema.define(version: 20150813181023) do
     t.string   "title",                     null: false
     t.boolean  "pending",    default: true, null: false
     t.string   "mode",                      null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  create_table "solo_slams", force: :cascade do |t|
-    t.integer  "user_id",                   null: false
-    t.string   "body",       default: [],   null: false, array: true
-    t.string   "title",                     null: false
-    t.boolean  "pending",    default: true, null: false
-    t.integer  "likes",      default: 0,    null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end

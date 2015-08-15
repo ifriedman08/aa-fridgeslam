@@ -30,6 +30,7 @@ gem 'jquery-ui-rails'
 gem 'backbone-on-rails'
 gem 'faker'
 gem 'literate_randomizer'
+gem 'amistad'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
