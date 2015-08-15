@@ -3,22 +3,29 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    var wordOptions = new Fridgeslam.Views.wordGen();
-    $('word-options-container').append(wordOptions);
-    debugger;
+    this.refreshWordList();
   },
 
   events: {
-    'click li': 'addWord'
+    'click li': 'addWord',
+    'click .post-slam': 'saveSlam',
+    'click .save-slam': 'postSlam'
   },
 
   addWord: function (event) {
     event.preventDefault();
     $target = $(event.currentTarget);
     $('div.slam-preview').append($target.html());
-    var wordOptions = new Fridgeslam.Views.wordGen();
-    $('word-options-container').append(wordOptions);
-    // debugger;
+    this.refreshWordList();
+  },
+
+  refreshWordList: function () {
+    $('ul.generated-word-list').empty();
+    for (var i = 0; i < 13; i++) {
+      var li = $('<li class="generated-word">');
+      li.text(dictionary[Math.floor(Math.random() * dictionary.length)]);
+      $('ul.generated-word-list').append(li);
+    }
   },
 
   render: function () {
@@ -28,9 +35,7 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
     });
 
     this.$el.html(content);
-    // $('word-options-container').empty();
-    // var wordOptions = new Fridgeslam.Views.wordGen();
-    // $('word-options-container').append(wordOptions);
+    this.refreshWordList();
     return this;
   }
 });

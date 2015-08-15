@@ -1,9 +1,8 @@
 
-  <ul class="generated-word-list">
+
   <% for (var i = 0; i < 8; i++) { %>
         <li class="generated-word" >
           <%var word = dictionary[Math.floor(Math.random()*dictionary.length)]; %>
           <%= word %>
         </li>
   <% } %>
-  </ul>

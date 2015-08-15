@@ -4,7 +4,6 @@ Fridgeslam.Views.wordGen = Backbone.View.extend({
   render: function () {
     var that = this;
     var content = this.template({ });
-
     this.$el.html(content);
     return this;
   }

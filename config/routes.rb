@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :slams, only: [:new, :create, :destroy, :index, :edit, :update, :show]
     resources :likes, only: [:create, :destroy]
+    resources :dictionary, only: [:index]
   end
 
   resources :users, only: [:new, :create]

@@ -77,7 +77,8 @@ div.dashboard a {
   font-size: 45px;
   color: rgb(64, 15, 119);
   text-decoration: none;
-  display: inline-block;
+  display: block;
+  float: left;
   background-color: white;
   margin: 10px;
   height: 150px;
@@ -87,6 +88,13 @@ div.dashboard a {
   text-align: center;
   top: 50%;
 }
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 
 div.nav-bar {
   position: absolute;
@@ -181,12 +189,20 @@ div.logout-button {
   pointer-events: none;
 }
 
+.content-holder {
+  margin: 0 auto;
+  width: 400px;
+  height: 600px;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
 .modalDialog:target {
   opacity:1;
   pointer-events: auto;
 }
 
-.modalDialog > div {
+.modalDialog > div, .content-holder > div {
   width: 600px;
   position: relative;
   margin: 10% auto;
@@ -195,7 +211,9 @@ div.logout-button {
   background: #fff;
   background: -moz-linear-gradient(#fff, #999);
   background: -webkit-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+  height: 800px;
+  overflow-y: scroll;
 }
 
 .close {

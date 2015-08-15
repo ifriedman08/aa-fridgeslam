@@ -6,9 +6,7 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
 
   routes: {
     '': 'dashboard',
-    'top': 'topIndex',
-    'new': 'newIndex',
-    'pending': 'pendingIndex',
+    'index/:list': 'goToIndex',
     'slams/new-solo': 'startSoloSlam',
     'slams/new-group': 'startGroupSlam',
     'slams/:id': 'boardShow'
@@ -23,14 +21,15 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   dashboard: function () {
+    this.$rootEl.off('click');
     var dashView = new Fridgeslam.Views.DashView();
     this._swapView(dashView);
 
   },
 
-  pendingIndex: function () {
+  goToIndex: function (list) {
     this.collection.fetch({
-      data: {order: 'pending'}
+      data: {order: list}
     });
 
     var indexView = new Fridgeslam.Views.SlamsIndex({
@@ -40,30 +39,6 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
     this._swapView(indexView);
   },
 
-  newIndex: function () {
-    this.collection.fetch({
-      data: {order: 'new'}
-    });
-
-    var indexView = new Fridgeslam.Views.SlamsIndex({
-      collection: this.collection
-    });
-
-    this._swapView(indexView);
-  },
-
-  topIndex: function () {
-    // debugger;
-    this.collection.fetch({
-      data: {order: 'top'}
-    });
-
-    var indexView = new Fridgeslam.Views.SlamsIndex({
-      collection: this.collection
-    });
-
-    this._swapView(indexView);
-  },
 
   _swapView: function (view) {
     this.currentView && this.currentView.remove();

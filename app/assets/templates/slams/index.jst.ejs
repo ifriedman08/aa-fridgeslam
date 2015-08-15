@@ -1,16 +1,8 @@
-<div class="modalDialog">
-  <div>	<a href="#close" title="Close" class="close">&times;</a>
-  <ul class="slam-list">
-    <% slams.each(function (slam) {%>
-      <li>
-        <div class="">
-          <p class="slam-title"><%= slam.escape('title') %><br>
-          by <%= slam.attributes.user.username %></p>
-        </div>
-        <div class="slam-likes">
-          <p class="slam-likes"><%= slam.escape('likes') %></p>
-        </div>
-      </li>
-    <% });%>
-  </ul>
+<div class="content-holder">
+  <div>
+    <a href="javascript:void(0)" title="Close" class="close">&times;</a>
+    <ul class="slam-list">
+
+    </ul>
+  </div>
 </div>
