@@ -87,9 +87,23 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
+        /*background-color: cyan;*/
       }
 
-      form {
+      form.new-session-form {
+        /*border-radius: 15px;
+        box-shadow: 5px 5px 10px black;
+        font-family: courier;
+        background-color: cyan;
+        text-align: center;
+        width:  100%;
+        padding: 15px;
+        box-sizing: border-box;
+        top: 40%;*/
+        /*border: 3px solid black;*/*/
+      }
+
+      div.sign-in-box {
         border-radius: 15px;
         box-shadow: 5px 5px 10px black;
         font-family: courier;
@@ -181,21 +195,29 @@
       <a href="#openModal">
         <img src="/assets/slam-logo.png" class="slam-logo" alt="" />
       </a>
+      <div class="sign-in-box">
+
       <form class="new-session-form" action="/session/" method="post">
         <%= auth_token_input %>
         <h1>Sign In</h1>
         <p class="errors"><%= flash[:errors].join("<br>").html_safe if flash[:errors] %></p>
-        <input type="text" name="user[username]" placeholder="Pick a username">
+        <input type="text" name="user[username]" placeholder="Enter username">
         <br>
-        <input type="password" name="user[password]" placeholder="Pick a password">
+        <input type="password" name="user[password]" placeholder="Enter password">
         <br>
         <input type="submit" class="button" id="submit" name="name" value="Log In">
-        or
-        <input type="submit" class="button" id="guest" name="name" value="Guest Login">
-        <br>
         <br>
         <a href="<%= new_user_url %>">Not registered? Sign up here!</a>
+        <br>
+        or
       </form>
+        <form class="guest-session-form" action="/session/" method="post">
+          <%= auth_token_input %>
+          <input type="hidden" name="user[username]" value="guest123">
+          <input type="hidden" name="user[password]" value="guest123">
+          <input type="submit" class="button" id="guest" name="name" value="Guest Login">
+        </form>
+      </div>
     </div>
     <div id="openModal" class="modalDialog">
       <div>	<a href="#close" title="Close" class="close">X</a>
@@ -273,7 +295,7 @@
         var font = 'courier';
 
         $.ajax({
-          url: 'dictionary',
+          url: 'api/dictionary',
           success: function (response) {
             window.dictionary = response;
           }

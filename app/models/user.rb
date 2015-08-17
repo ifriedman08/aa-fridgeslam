@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   include Amistad::FriendModel
 
-  validates :password_digest, :email, :session_token, presence: true
+  validates :password_digest, :username, :email, :session_token, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :email, :username, uniqueness: true
 

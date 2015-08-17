@@ -1,7 +1,8 @@
 class Like < ActiveRecord::Base
 
-  validates :user, :slam_id, presence: true
-  # validates :user_id, uniqueness: { scope: [:slam_type, :slam_id] }
+  validates :user_id, :slam_id, presence: true
+  validates_uniqueness_of :user_id, scope: :slam_id
+  validate :cant_like_own_slam
 
   belongs_to(
     :slam,
@@ -11,4 +12,9 @@ class Like < ActiveRecord::Base
     :user
   )
 
+  def cant_like_own_slam
+    if self.user.id == self.slam.user_id
+      errors.add(:like, "can't be greater than total value")
+    end
+  end
 end

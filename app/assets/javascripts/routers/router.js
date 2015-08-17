@@ -10,7 +10,25 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
     'index/:list': 'goToIndex',
     'slams/new-solo': 'startSoloSlam',
     'slams/new-group': 'startGroupSlam',
-    'slams/:id': 'boardShow'
+    'slams/:id': 'slamShow'
+  },
+
+  slamShow: function (id) {
+    // debugger;
+    var that = this;
+    var slam = this.collection.getOrFetch(id);
+
+    if (slam.escape('user_id') === Fridgeslam.CURRENT_USER.id && slam.get('pending')) {
+      var slamEdit = new Fridgeslam.Views.SlamsEdit({
+        model: slam,
+      });
+      this._swapView(slamEdit);
+    } else {
+      var slamShow = new Fridgeslam.Views.SlamShow({
+        model: slam,
+      });
+      this._swapView(slamShow);
+    }
   },
 
   startSoloSlam: function () {
@@ -34,12 +52,13 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   goToIndex: function (list) {
-    this.collection.fetch({
+    var collection = new Fridgeslam.Collections.Slams();
+    collection.fetch({
       data: {order: list}
     });
 
     var indexView = new Fridgeslam.Views.SlamsIndex({
-      collection: this.collection
+      collection: collection
     });
 
     this._swapView(indexView);

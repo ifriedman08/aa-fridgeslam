@@ -195,8 +195,6 @@
         <br>
         <br>
         <input type="submit" class="button" id="submit" value="Submit">
-        or
-        <input type="submit" class="button" id="guest" value="Guest Login">
         <br>
         <br>
         <a href=" <%= new_session_url %> ">Already registered? Sign in here!</a>
@@ -251,7 +249,7 @@
       }
 
       $.ajax({
-        url: '2/dictionary',
+        url: '/api/dictionary',
         success: function (response) {
           window.dictionary = response;
         }

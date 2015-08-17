@@ -2,7 +2,7 @@
     <a href="/#/"><img src="assets/white-slam-logo.png" alt="" /></a>
 
     <br><%= current_user.username %>'s profile
-
+    <input class="user-search" type="text" name="name" value="" placeholder="User search">
     <div class="logout-button"><%= button_to "LOG OUT", session_url, :method => :delete %></div>
   </div>
 </div>

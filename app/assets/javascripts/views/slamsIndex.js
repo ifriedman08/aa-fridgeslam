@@ -15,11 +15,21 @@ Fridgeslam.Views.SlamsIndex = Backbone.CompositeView.extend({
   },
 
   events: {
-    'click .close': 'closeView'
+    'click .close': 'closeView',
+    'click p.slam-title': 'goToShow'
+  },
+
+  goToShow: function (event) {
+    event.preventDefault();
+
+    // $target = $(event.currentTarget());
+    // debugger;
+    Backbone.history.navigate("/slams/" + event.currentTarget.dataset.id, { trigger: true });
+
   },
 
   closeView: function () {
-    Backbone.history.navigate("/", { trigger: true });
+    Backbone.history.navigate("", { trigger: true });
   },
 
   render: function () {

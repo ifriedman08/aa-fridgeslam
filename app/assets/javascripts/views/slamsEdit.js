@@ -1,8 +1,9 @@
-Fridgeslam.Views.SlamsNew = Backbone.View.extend({
-  template: JST['slams/new'],
+Fridgeslam.Views.SlamsEdit = Backbone.View.extend({
+  template: JST['slams/edit'],
 
   initialize: function () {
-    this.word_array = [];
+    // debugger;
+    this.word_array = this.model.get('body');
     this.listenTo(this.model, 'sync', this.render);
     this.refreshWordList();
   },
@@ -18,9 +19,7 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
     var attrs = {
       title: $('input.slam-title').val(),
       body: $('div.slam-preview').html().split(' '),
-      mode: 'solo',
-      pending: false,
-      user: Fridgeslam.CURRENT_USER.id
+      pending: false
     };
     var that = this;
     this.model.save(attrs, {
@@ -39,13 +38,14 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
     var attrs = {
       title: $('input.slam-title').val(),
       body: $('div.slam-preview').html().split(' '),
-      mode: 'solo',
-      pending: true,
-      user: Fridgeslam.CURRENT_USER.id
+      pending: true
     };
     var that = this;
-    this.model.set(attrs);
-    this.model.save({}, {
+    // this.model.set(attrs);
+    // this.model.set('body', attrs.body);
+    debugger;
+    this.model.save(attrs, {
+      patch: true,
       success: function () {
         alert('saved!');
         Backbone.history.navigate('#', {trigger: true});
