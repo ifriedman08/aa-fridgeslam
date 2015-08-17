@@ -52,12 +52,34 @@
    animation-direction: alternate;
  }
 
-ul.dashboard {
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+div.dashboard {
   position: fixed;
-  vertical-align: middle;
+  top: 100px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+div.dashboard-buttons {
+  display: block;
+  position: relative;
+}
+
+div.dashboard a {
+  position: relative;
+  padding: 10px 0;
+  font-family: courier;
+  font-size: 45px;
+  color: white;
+  text-decoration: none;
+  float: left;
+  background-color: rgb(13, 33, 93);
+  margin: 15px;
+  height: 15%;
+  width: 25%;
+  box-shadow: 14px 14px 14px rgb(18, 30, 61);
+  border-radius: 10px;
+  text-align: center;
 }
 
 canvas {
@@ -67,26 +89,6 @@ canvas {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-}
-
-div.dashboard p {
-}
-
-div.dashboard a {
-  font-family: courier;
-  font-size: 45px;
-  color: rgb(64, 15, 119);
-  text-decoration: none;
-  display: block;
-  float: left;
-  background-color: white;
-  margin: 10px;
-  height: 150px;
-  width: 300px;
-  border: grey 1px solid;
-  border-radius: 5px;
-  text-align: center;
-  top: 50%;
 }
 
 .clearfix:after {
@@ -236,16 +238,113 @@ div.logout-button {
 }
 
 .close:hover {
-    background: #00d9ff;
-}
-
-form.solo-lam-form {
-  position: absolute;
-  height: 70%;
-  width: auto;
-  background-color: white;
+  background: #00d9ff;
 }
 
 img.new-line-icon {
-  height: 40px;
+  height: 20px;
+}
+
+form.solo-slam-form li {
+  margin: 10px;
+  text-align: center;
+  border: black 1px solid;
+}
+
+form.solo-slam-form ul {
+  /*position: fixed;*/
+  display: inline-block;
+  float: left;
+  top: 50%;
+  /*transform: translateY(-50%);*/
+  list-style-type: none;
+}
+
+form.solo-slam-form > div {
+  display: inline-block;
+  float: left;
+}
+
+form.solo-slam-form {
+  top: 100px;
+  position: relative;
+  background-color: rgb(204, 204, 204);
+  font-family: courier;
+  font-size: 32px;
+  border-radius: 10px;
+  width: 90%;
+  height: 700px;
+  margin: auto;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px black;
+}
+
+form.solo-slam-form li{
+  background-color: white;
+  cursor: pointer;
+}
+
+li.punctuation {
+  width: 50px;
+}
+
+ul.generated-word-list {
+  width: 300px;
+}
+
+li.generated-word {
+  width: auto;
+}
+
+div.title-container {
+  top: 15px;
+  right: 15px;
+  position: absolute;
+}
+
+div.slam-preview {
+  overflow: scroll;
+  padding: 10px 20px;
+  position: absolute;
+  right: 15px;
+  top: 14%;
+  border-radius: 10px;
+  -webkit-appearance: text;
+  border-top: rgb(77, 77, 77) 1px solid;
+  border-left: rgb(77, 77, 77) 1px solid;
+  background-color: white;
+  width: 600px;
+  height: 500px;
+}
+
+input.slam-title {
+  font-family: courier;
+  text-align: right;
+  font-size: 36px;
+  border-radius: 10px;
+  width: 640px;
+  height: 60px;
+}
+
+form.solo-slam-form div.button-container {
+  bottom: 15px;
+  right: 15px;
+  position: absolute;
+}
+
+div.button-container button {
+  font-family: courier;
+  font-size: 30px;
+  height: 50px;
+  color: rgb(255, 255, 255);
+}
+
+button.save-slam {
+  width: 100px;
+  background-color: rgb(29, 213, 13);
+}
+
+button.post-slam {
+  width: 150px;
+  background-color: rgb(68, 13, 111);
 }

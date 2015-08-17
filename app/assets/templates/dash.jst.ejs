@@ -1,8 +1,8 @@
-<div class="dashboard clearfix">
-  <a id="top-button" href="#/index/top"><p class="dash-button-text">TOP<br>SLAMS</p></a>
-  <a id="new-button" href="#/index/new"><p class="dash-button-text">FRESHEST SLAMS</p></a>
-  <a id="pending-button" href="#/index/pending"><p class="dash-button-text">MY PENDING SLAMS (<%= Fridgeslam.CURRENT_USER.pendingSlams %>)</p></a>
-  <a id="my-slams-button" href="#/my-slams"><p class="dash-button-text">MY FINISHED SLAMS</p></a>
-  <a id="start-button" href="#/slams/new-solo"><p class="dash-button-text">START NEW SOLO SLAM</p></a>
-  <a id="start-button" href="#/group-slams/new-group"><p class="dash-button-text">START NEW GROUP SLAM</p></a>
+<div class="dashboard-buttons clearfix">
+  <a id="top-button" href="#/index/top">TOP<br>SLAMS</a>
+  <a id="my-slams-button" href="#/my-slams">MY FINISHED<br>SLAMS</a>
+  <a id="start-button" href="#/slams/new-solo">START NEW<br>SOLO SLAM</a>
+  <a id="new-button" href="#/index/new">FRESHEST<br>SLAMS</a>
+  <a id="pending-button" href="#/index/pending">MY PENDING<br>SLAMS (<%= this.collection.pendingSlams() %>)</a>
+  <a id="start-button" href="#/group-slams/new-group">START NEW<br>GROUP SLAM</a>
 </div>

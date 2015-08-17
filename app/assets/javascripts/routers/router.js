@@ -2,6 +2,7 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#content');
     this.collection = new Fridgeslam.Collections.Slams();
+    // this.listenTo(this.collection, 'sync', this.)
   },
 
   routes: {
@@ -13,16 +14,21 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   startSoloSlam: function () {
+    var that = this;
     var newSlam = new Fridgeslam.Models.Slam();
     var newSlamForm = new Fridgeslam.Views.SlamsNew({
-      model: newSlam
+      model: newSlam,
+      collection: that.collection
     });
     this._swapView(newSlamForm);
   },
 
   dashboard: function () {
+    this.collection.fetch();
     this.$rootEl.off('click');
-    var dashView = new Fridgeslam.Views.DashView();
+    var dashView = new Fridgeslam.Views.DashView({
+      collection: this.collection
+    });
     this._swapView(dashView);
 
   },

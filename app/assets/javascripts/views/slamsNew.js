@@ -9,8 +9,29 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
 
   events: {
     'click li': 'addWord',
-    'click input.post-slam': 'postSlam',
-    'click input.save-slam': 'saveSlam'
+    'click button.post-slam': 'postSlam',
+    'click button.save-slam': 'saveSlam'
+  },
+
+  postSlam: function (event) {
+    event.preventDefault();
+    var attrs = {
+      title: $('input.slam-title').val(),
+      body: $('div.slam-preview').html().split(' '),
+      mode: 'solo',
+      pending: false,
+      user: Fridgeslam.CURRENT_USER.id
+    };
+    var that = this;
+    this.model.save(attrs, {
+      success: function () {
+        alert('posted!');
+        Backbone.history.navigate('#', {trigger: true});
+      },
+      error: function () {
+        alert("Body and title can't be blank.");
+      }
+    });
   },
 
   saveSlam: function (event) {
@@ -18,16 +39,20 @@ Fridgeslam.Views.SlamsNew = Backbone.View.extend({
     var attrs = {
       title: $('input.slam-title').val(),
       body: $('div.slam-preview').html().split(' '),
+      mode: 'solo',
+      pending: true,
+      user: Fridgeslam.CURRENT_USER.id
     };
+    var that = this;
     this.model.save(attrs, {
       success: function () {
         alert('saved!');
+        Backbone.history.navigate('#', {trigger: true});
       },
       error: function () {
-        alert('errors');
+        alert("Body and title can't be blank.");
       }
     });
-    // debugger;
   },
 
   addWord: function (event) {

@@ -22,7 +22,7 @@
     id: "<%= current_user.id %>",
     pendingSlams: "<%= current_user.pending_slams.length %>"
     }
-    
+
     $.ajax({
       url: 'api/dictionary',
       success: function (response) {

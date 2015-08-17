@@ -11,10 +11,12 @@
       <li class="common-word" >not</li>
       <li class="common-word" >of</li>
       <li class="common-word" >in</li>
+    </ul>
+  </div>
+  <div class="common-word-buttons">
+    <ul class="common-word-list">
       <li class="common-word" >is</li>
       <li class="common-word" >are</li>
-      <li class="common-word" >do</li>
-      <li class="common-word" >does</li>
       <li class="common-word" >I</li>
       <li class="common-word" >you</li>
       <li class="common-word" >we</li>
@@ -36,15 +38,19 @@
       <li class="new-line" ><img class="new-line-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Return_arrow.svg/2000px-Return_arrow.svg.png"/></li>
     </ul>
   </div>
-  <div class="title-container">
-    <input class="slam-title" type="text" name="slam[title]" value="<%= slam.escape('title') %>" placeholder="Title goes here">
-  </div>
-  <div class="slam-preview">
-
-  </div>
   <div class="word-options-container">
     <ul class="generated-word-list"></ul>
   </div>
-  <input class="save-slam" type="button" name="name" value="Save">
-  <input class="post-slam" type="button" name="name" value="Submit">
+  <div class="title-container">
+    <input class="slam-title" type="text" name="slam[title]" value="<%= slam.escape('title') %>" placeholder="Title goes here">
+  </div>
+  <br>
+  <div class="slam-preview">
+
+  </div>
+  <br>
+  <div class="button-container">
+    <button class="save-slam">Save</button>
+    <button class="post-slam">Submit</button>
+  </div>
 </form>

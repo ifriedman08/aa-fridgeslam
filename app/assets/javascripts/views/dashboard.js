@@ -5,11 +5,12 @@ Fridgeslam.Views.DashView = Backbone.View.extend({
 
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync add', this.render);
   },
 
   render: function () {
     var that = this;
+    // this.collection.fetch();
     var content = this.template({
       slams: that.collection
     });

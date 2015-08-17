@@ -7,6 +7,10 @@ window.Fridgeslam = {
     var router = new Fridgeslam.Routers.Router();
     Backbone.history.start();
 
-    var pending = Fridgeslam.CURRENT_USER.pendingSlams;
+    //   this.CURRENT_USER = {
+    //   username: "<%= current_user.username %>",
+    //   id: "<%= current_user.id %>",
+    //   pendingSlams: "<%= current_user.pending_slams.length %>"
+    // };
   }
 };

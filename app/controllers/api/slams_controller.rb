@@ -3,9 +3,15 @@ class Api::SlamsController < ApplicationController
   end
 
   def create
-    @slam = Slam.new(slam_params)
+    @slam = Slam.new
+    @slam.user_id = current_user.id
+    @slam.title = params[:title]
+    @slam.body = params[:body]
+    @slam.pending = params[:pending]
+    @slam.mode = params[:mode]
+
     if @slam.save
-      render :show
+      render :index
     else
       flash.now[:errors] = @slam.errors.full_messages
       redirect_to '#/slams/new-solo'
@@ -39,6 +45,6 @@ class Api::SlamsController < ApplicationController
   end
 
   def slam_params
-    params.require(:slam).permit(:title, :body)
+    params.require(:slam).permit(:title, :body, :mode, :pending)
   end
 end
