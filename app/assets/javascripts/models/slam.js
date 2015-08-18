@@ -2,12 +2,14 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
   urlRoot: '/api/slams',
 
   user: function () {
+    debugger;
     if (this._user) {
       return this._user;
     } else {
       this._user = new Fridgeslam.Models.User();
       return this._user;
     }
+    // return this._user;
   },
 
   parse: function (response) {

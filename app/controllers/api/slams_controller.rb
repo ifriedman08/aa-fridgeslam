@@ -34,7 +34,7 @@ class Api::SlamsController < ApplicationController
       # @slams = Slam.where(pending: false).joins(:likes).group('slams.id').order("COUNT(likes.id) DESC")
       @slams = Slam.where(pending: false).joins("LEFT OUTER JOIN likes ON slams.id = likes.slam_id").includes(:user, :likes).group('slams.id').order("COUNT(likes.id) DESC").limit(25)
     when 'new'
-      @slams = Slam.where(pending: false).order(created_at: :desc).limit(25).includes(:user, :likes)
+      @slams = Slam.where(pending: false).order(updated_at: :desc).limit(25).includes(:user, :likes)
     when 'pending'
       @slams = Slam.where(pending: true, user_id: current_user.id).includes(:likes, :user).order(created_at: :desc)
     when 'completed'

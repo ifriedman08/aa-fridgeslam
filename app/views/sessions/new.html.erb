@@ -195,17 +195,23 @@
       <a href="#openModal">
         <img src="/assets/slam-logo.png" class="slam-logo" alt="" />
       </a>
+
       <div class="sign-in-box">
 
       <form class="new-session-form" action="/session/" method="post">
         <%= auth_token_input %>
         <h1>Sign In</h1>
+        <p>
+          (click above to find out more)
+        </p>
         <p class="errors"><%= flash[:errors].join("<br>").html_safe if flash[:errors] %></p>
         <input type="text" name="user[username]" placeholder="Enter username">
         <br>
         <input type="password" name="user[password]" placeholder="Enter password">
         <br>
+        <br>
         <input type="submit" class="button" id="submit" name="name" value="Log In">
+        <br>
         <br>
         <a href="<%= new_user_url %>">Not registered? Sign up here!</a>
         <br>
@@ -295,7 +301,7 @@
         var font = 'courier';
 
         $.ajax({
-          url: 'api/dictionary',
+          url: '/api/dictionary',
           success: function (response) {
             window.dictionary = response;
           }

@@ -2,7 +2,6 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   initialize: function() {
     this.$rootEl = $('#content');
     this.collection = new Fridgeslam.Collections.Slams();
-    // this.listenTo(this.collection, 'sync', this.)
   },
 
   routes: {
@@ -10,7 +9,19 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
     'index/:list': 'goToIndex',
     'slams/new-solo': 'startSoloSlam',
     'slams/new-group': 'startGroupSlam',
-    'slams/:id': 'slamShow'
+    'slams/:id': 'slamShow',
+    'users/:id': 'userShow'
+  },
+
+  userShow: function (id) {
+    var that = this;
+    var users = new Fridgeslam.Collections.Users();
+    var user = users.getOrFetch(id);
+
+    var userShow = new Fridgeslam.Views.UserShow({
+      model: user,
+    });
+    this._swapView(userShow);
   },
 
   slamShow: function (id) {

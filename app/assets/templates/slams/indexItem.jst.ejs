@@ -1,7 +1,7 @@
 <li class="slam-list-item">
   <div class="">
     <a href="#/slams/<%= slam.escape('id') %>" data-id="<%= slam.escape('id')%>" class="slam-title-link"><%= slam.escape('title') %></a>
-    by <a href="#/users" class="slam-author-link"><%= slam.user().escape('username') %></a>
+    by <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
   </div>
   <div class="slam-likes">
     <p class="slam-likes"><%= slam.escape('likes') %></p>

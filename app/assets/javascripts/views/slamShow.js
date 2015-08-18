@@ -17,7 +17,6 @@ Fridgeslam.Views.SlamShow = Backbone.View.extend({
 
   addLike: function (event) {
     event.preventDefault();
-    // debugger;
     var l = new Fridgeslam.Models.Like({});
     l.set({
       'slam_id': Number(event.currentTarget.dataset.slamId),
@@ -33,6 +32,8 @@ Fridgeslam.Views.SlamShow = Backbone.View.extend({
     });
 
     this.$el.html(content);
+    this.attachSubviews();
+
     return this;
   }
 });

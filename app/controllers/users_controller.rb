@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
       if @user.save
         sign_in(@user)
-        render json: @user.slams
+        redirect_to '/'
       else
         flash.now[:errors] = @user.errors.full_messages
         render :new

@@ -1,6 +1,6 @@
   <div class="">
     <h2 data-id="<%= slam.escape('id')%>" class="slam-show-title"><%= slam.escape('title') %></h2>
-    by <span class="slam-show-author"><%= slam.user().escape('username') %></span>
+    by <a href="#/users/<%= slam.user().escape('id') %>" class="slam-show-author"><%= slam.user().escape('username') %></a>
   </div>
   <div class="slam-body-container">
     <p class="slam-show-body">
