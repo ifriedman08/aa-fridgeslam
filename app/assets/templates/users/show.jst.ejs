@@ -1,8 +1,18 @@
+<% if (this.model.isFriend()) { %>
+  <% var buttonClass = 'current-friend' %>
+  <% var buttonText = 'Friended' %>
+<% } else {%>
+  <% var buttonClass = 'not-friend' %>
+  <% var buttonText = 'Send Friendship Request' %>
+<% } %>
+
 <div class="username">
-  <h1><%= user.escape('username') %></h1>
+  <h1><%= user.escape('username') %>'s slams:</h1>
+  <button type="button" class="<%= buttonClass %>" name="button"><%= buttonText %></button>
 </div>
+<br>
 <div class="user-slams-container">
   <ul class="user-slams-list">
-    
+
   </ul>
 </div>

@@ -5,6 +5,12 @@
   <form class="user-search-form" action="api/users" method="get">
     <input class="user-search-bar" type="text" name="user[username]" value="" placeholder="User search">
   </form>
+  <a class="friendships-link" href="/#/pendingfriendships">
+    <div class="friends-div">
+      <img src="assets/friends.png" alt="" />
+      <%= current_user.pending_invited_by.length unless current_user.pending_invited_by.length == 0 %>
+    </div>
+  </a>
   <div class="logout-button"> <%= button_to 'Logout', session_url, method: :delete %> </div>
   </div>
 </div>

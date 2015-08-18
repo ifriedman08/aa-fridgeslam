@@ -10,7 +10,12 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
     'slams/new-solo': 'startSoloSlam',
     'slams/new-group': 'startGroupSlam',
     'slams/:id': 'slamShow',
-    'users/:id': 'userShow'
+    'users/:id': 'userShow',
+    'pendingfriendships': 'friendsShow'
+  },
+
+  friendsShow: function () {
+    debugger;
   },
 
   userShow: function (id) {

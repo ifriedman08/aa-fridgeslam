@@ -8,17 +8,15 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
       this._user = new Fridgeslam.Models.User();
       return this._user;
     }
-    // return this._user;
   },
 
   likes: function () {
     if (this._likes) {
-      return this._likes.length;
+      return this._likes;
     } else {
       this._likes = new Fridgeslam.Collections.Likes();
-      return this._likes.length;
+      return this._likes;
     }
-    // return this._user;
   },
 
   parse: function (response) {
@@ -27,19 +25,10 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
       delete response.user;
     }
     if (response.likes) {
-      this.user().set(response.likes);
+      // debugger;
+      this.likes().set(response.likes);
       delete response.likes;
     }
     return response;
   }
-
-  // validate: function (attrs) {
-  //   if (attrs.title === '') {
-  //     return "Title can't be blank.";
-  //   }
-  //
-  //   if (attrs.body === []) {
-  //     return "Body can't be empty.";
-  //   }
-  // }
 });

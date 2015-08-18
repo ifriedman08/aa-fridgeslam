@@ -14,19 +14,20 @@ class User < ActiveRecord::Base
     :slams
   )
 
-  has_many(
-    :friends,
-    through: :id,
-    foreign_key: :user_1,
-    class_name: 'Friendship'
-  )
 
-  has_many(
-    :friendships,
-    primary_key: :id,
-    foreign_key: :user_1,
-    class_name: 'Friendship'
-  )
+  # has_many(
+  #   :friends,
+  #   through: :id,
+  #   foreign_key: :user_1,
+  #   class_name: 'Friendship'
+  # )
+
+  # has_many(
+  #   :friendships,
+  #   primary_key: :id,
+  #   foreign_key: :user_1,
+  #   class_name: 'Friendship'
+  # )
 
   def self.search(search)
     if search
