@@ -121,20 +121,20 @@ div.nav-bar img {
   top: 2%;
 }
 
-div.nav-bar input.user-search:hover{
-  background-color: white;
-}
-
-div.nav-bar input.user-search{
-  width: 20%;
-  position: relative;
-  height: 40px;
-  color: black;
-  background-color: white;
-  right: 20%;
-  border-radius: 5px;
-  z-index: 32476;
-}
+// div.nav-bar input.user-search:hover{
+//   background-color: white;
+// }
+//
+// div.nav-bar input.user-search-bar{
+//   width: 20%;
+//   position: relative;
+//   height: 40px;
+//   color: black;
+//   background-color: white;
+//   right: 20%;
+//   border-radius: 5px;
+//   z-index: 32476;
+// }
 
 div.nav-bar input {
   width: 200px;
@@ -159,9 +159,32 @@ div.logout-button {
   border-left: 1px white solid;
 }
 
-div.nav-bar input:hover{
+div.nav-bar input.logout-button:hover{
   background-color: rgb(233, 23, 23);
   border: white 1px solid;
+}
+
+div.nav-bar h1{
+  position: static;
+  transform: translateY(10px) translateX(20%);
+}
+
+form.user-search-form {
+  left: 100px;
+  top: 30px;
+  position: fixed;
+  z-index: 245453;
+}
+
+form.user-search-form > input.user-search-bar {
+  color: black;
+  border-radius: 10px;
+  height: 40px;
+  width: 500px;
+  background-color: white;
+  float: left;
+  position: static;
+  display: inline-block;
 }
 
 .slams-index {
@@ -363,4 +386,28 @@ button.save-slam {
 button.post-slam {
   width: 150px;
   background-color: rgb(68, 13, 111);
+}
+
+.user-search-list {
+  top: 120px;
+  position: absolute;
+  list-style-type: none;
+  font-family: courier;
+  left: 50px;
+}
+
+.user-search-list a {
+  text-decoration: none;
+  color: white;
+  background-color: #79196c;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px black;
+  border: black 1px solid;
+  padding: 10px;
+}
+
+.user-search-list > li {
+  margin: 30px;
+  font-size: 30px;
+  color: black;
 }

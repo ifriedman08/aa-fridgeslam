@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.search(params[:user][:username])
+    render 'api/users/search.html.erb'
   end
 
   def show

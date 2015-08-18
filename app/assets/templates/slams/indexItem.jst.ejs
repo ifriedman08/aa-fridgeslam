@@ -4,6 +4,6 @@
     by <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
   </div>
   <div class="slam-likes">
-    <p class="slam-likes"><%= slam.escape('likes') %></p>
+    <p class="slam-likes"><%= slam.likes() %> likes</p>
   </div>
 </li>

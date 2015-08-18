@@ -1,7 +1,7 @@
 class Like < ActiveRecord::Base
 
   validates :user_id, :slam_id, presence: true
-  validates_uniqueness_of :user_id, scope: :slam_id
+  validates_uniqueness_of :slam_id, scope: [:user_id]
   validate :cant_like_own_slam
 
   belongs_to(

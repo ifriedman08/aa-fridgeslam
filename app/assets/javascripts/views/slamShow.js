@@ -5,6 +5,7 @@ Fridgeslam.Views.SlamShow = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model._likes, 'add', this.render);
     this.$el.on('click', function () {
       event.stopPropagation();
     });
@@ -16,23 +17,29 @@ Fridgeslam.Views.SlamShow = Backbone.View.extend({
   },
 
   addLike: function (event) {
+    // alert('liked!')
     event.preventDefault();
     var l = new Fridgeslam.Models.Like({});
     l.set({
       'slam_id': Number(event.currentTarget.dataset.slamId),
       'user_id': Number(Fridgeslam.CURRENT_USER.id)});
-    l.save();
-    this.render();
+    l.save({}, {
+      success: function () {
+        this.model._likes.add(l);
+        this.render();
+    }.bind(this)
+  });
   },
 
   render: function () {
+    // this.model.fetch();
     var that = this;
     var content = this.template({
       slam: that.model
     });
 
     this.$el.html(content);
-    this.attachSubviews();
+    // this.attachSubviews();
 
     return this;
   }

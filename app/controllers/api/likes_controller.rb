@@ -5,6 +5,7 @@ class Api::LikesController < ApplicationController
       # redirect_to '#/slams/' + like_params[:slam_id]
       render json: @like
     else
+      debugger
       # flash.now[:errors] = @like.errors.full_messages
       render json: @like.errors.full_messages
     end

@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
     class_name: 'Friendship'
   )
 
+  def self.search(search)
+    if search
+      where('username LIKE ?', "%#{search}%")
+    else
+      self.all
+    end
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     if user && user.is_password?(password)

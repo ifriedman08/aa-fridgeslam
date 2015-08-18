@@ -2,7 +2,6 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
   urlRoot: '/api/slams',
 
   user: function () {
-    debugger;
     if (this._user) {
       return this._user;
     } else {
@@ -12,12 +11,25 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
     // return this._user;
   },
 
+  likes: function () {
+    if (this._likes) {
+      return this._likes.length;
+    } else {
+      this._likes = new Fridgeslam.Collections.Likes();
+      return this._likes.length;
+    }
+    // return this._user;
+  },
+
   parse: function (response) {
     if (response.user) {
       this.user().set(response.user, { parse: true });
       delete response.user;
     }
-
+    if (response.likes) {
+      this.user().set(response.likes);
+      delete response.likes;
+    }
     return response;
   }
 

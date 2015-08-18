@@ -1,8 +1,8 @@
 <div class="nav-bar">
-  <a href="/#/"><img src="assets/white-slam-logo.png" alt="" /></a>
+  <a href="/#/"><img src="../assets/white-slam-logo.png" alt="" /></a>
 
   <h1><%= current_user.username %>'s profile</h1>
-  <form class="user-search-form" action="api/users" method="get">
+  <form class="user-search-form" action="/api/users" method="get">
     <input class="user-search-bar" type="text" name="user[username]" value="" placeholder="User search">
   </form>
   <div class="logout-button"> <%= button_to 'Logout', session_url, method: :delete %> </div>
@@ -12,7 +12,11 @@
 
 </canvas>
 
-<div id="content"></div>
+<ul class="user-search-list">
+  <% @users.each do |user| %>
+    <li><a href="/#/users/<%= user.id %>"><%= user.username %></a></li>
+  <% end %>
+</ul>
 
 <script type="text/javascript">
 
@@ -30,7 +34,7 @@
     })
 
     $.ajax({
-      url: 'api/dictionary',
+      url: '/api/dictionary',
       success: function (response) {
         window.dictionary = response;
       }
