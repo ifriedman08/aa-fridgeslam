@@ -464,7 +464,31 @@ button.post-slam {
   left: 50px;
 }
 
+.requestor-list {
+  top: 120px;
+  position: absolute;
+  list-style-type: none;
+  font-family: courier;
+  left: 50px;
+}
+
+.requestor-list > li {
+  margin: 30px;
+  font-size: 30px;
+  color: black;
+}
+
 .user-search-list a {
+  text-decoration: none;
+  color: white;
+  background-color: #79196c;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px black;
+  border: black 1px solid;
+  padding: 10px;
+}
+
+.requestor-list a {
   text-decoration: none;
   color: white;
   background-color: #79196c;

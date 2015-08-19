@@ -15,8 +15,8 @@ class Api::FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    @frendhship.pending = false
-    if @friendship.save
+
+    if @friendship.update(friendship_params)
       render :index
     else
       flash.now[:errors] = @friendship.errors.full_messages
@@ -25,11 +25,11 @@ class Api::FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find(params[:id])
-    @frendhship.destroy
+    @friendship.destroy
     render :index
   end
 
   def friendship_params
-    params.require(:friendship).permit(:friend_id, :friendable_id, :pending)
+    params.require(:friendship).permit(:id, :pending)
   end
 end

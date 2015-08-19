@@ -25,7 +25,6 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
       delete response.user;
     }
     if (response.likes) {
-      // debugger;
       this.likes().set(response.likes);
       delete response.likes;
     }

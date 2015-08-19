@@ -15,14 +15,13 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   pendingFriendsIndex: function () {
-    // debugger;
-    var currentUser = new Fridgeslam.Models.User({ id: Fridgeslam.CURRENT_USER.id });
-    currentUser.fetch();
-    var collection = currentUser.pendingFriendships();
-    collection.fetch();
+    var requestors = new Fridgeslam.Collections.Users();
+    requestors.fetch({
+      data: {pending_invites: true}
+    });
 
     var friendsView = new Fridgeslam.Views.PendingFriendsIndex({
-      collection: collection
+      collection: requestors
     });
 
     this._swapView(friendsView);

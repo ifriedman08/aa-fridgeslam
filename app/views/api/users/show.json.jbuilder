@@ -1,11 +1,19 @@
 json.extract!(@user, :id, :username, :slams)
 
-json.pending_friendships do
-  json.array! @user.pending_invited do |pending|
-    json.extract!(pending, :id, :username)
+json.friends do
+  json.array! @user.friends do |friend|
+    json.extract!(friend, :id, :username, :email)
   end
 end
-#
-# json.friends do
-#   json.array!(@user.friends, :id)
-# end
+
+json.friendees do
+  json.array! @user.friendships do |friendship|
+    json.extract!(friendship, :friend_id, :pending)
+  end
+end
+
+json.pending_inviters do
+  json.array! @user.pending_invited_by do |inviter|
+    json.extract!(inviter, :id, :username)
+  end
+end

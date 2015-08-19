@@ -1,6 +1,12 @@
-<% if (this.model.isFriend()) { %>
+<% if (user.isFriend()) { %>
   <% var buttonClass = 'current-friend' %>
-  <% var buttonText = 'Friended' %>
+  <% var buttonText = 'Friended!' %>
+<% } else if (user.isWaiting()) { %>
+  <% var buttonClass = 'awaiting-friendship' %>
+  <% var buttonText = 'Accept Friend Request' %>
+<% } else if (user.friendshipSent()) { %>
+  <% var buttonClass = 'awaiting-friendship' %>
+  <% var buttonText = 'Friend Request Sent' %>
 <% } else {%>
   <% var buttonClass = 'not-friend' %>
   <% var buttonText = 'Send Friendship Request' %>

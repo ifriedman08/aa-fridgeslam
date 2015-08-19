@@ -1,16 +1,20 @@
 Fridgeslam.Models.Friendship = Backbone.Model.extend({
   urlRoot: '/api/friendships',
 
+  // friend_id: function () {
+  //   if (this._friend_id) {
+  //     return this._friend_id;
+  //   } else {
+  //     this._friend_id = undefined;
+  //     return this._friend_id;
+  //   }
+  // },
+  //
   // parse: function (response) {
-  //   if (response.friend_id) {
-  //     this.friend_id().set(response.friend_id);
-  //     delete response.friend_id;
+  //   debugger
+  //   if (response.pending_friendships) {
+  //     this.pending_friendships().set(response.pending_friendships, { parse: true });
+  //     delete response.pending_friendships;
   //   }
-  //   if (response.friendable_id) {
-  //     // debugger;
-  //     this.friendable_id().set(response.friendable_id);
-  //     delete response.friendable_id;
-  //   }
-  //   return response;
   // }
 });

@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # def index
+  #
+  # end
+
   def create
     if params[:user][:password] != params[:user][:password_confirmation]
       flash.now[:errors] = ['Passwords must match']

@@ -12,12 +12,7 @@
     }
   });
 
-  // $.ajax({
-  //   url: 'api/dictionary',
-  //   success: function (response) {
-  //     window.dictionary = response;
-  //   }
-  // });
+
 
   var Circle = Circles.Circle = function (centerX, centerY, radius, color, word, font) {
     this.centerX = centerX;
@@ -31,12 +26,6 @@
 
   Circle.randomCircle = function (maxX, maxY) {
 
-    // var fonts = [
-    //   'courier',
-    //   'verdana',
-    //   'georgia',
-    // ];
-    // var font = fonts[Math.floor(Math.random() * fonts.length)]
     var font = 'courier';
 
     var word = dictionary[Math.floor(Math.random()*dictionary.length)];

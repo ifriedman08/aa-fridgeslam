@@ -2,21 +2,41 @@ Fridgeslam.Models.User = Backbone.Model.extend({
   urlRoot: '/api/users',
 
   isFriend: function () {
-    // debugger;
-    this.attributes.friends.forEach( function(friend) {
+    // this.fetch();
+    var result = false;
+    this.friends().forEach( function(friend) {
       if (friend.id == Fridgeslam.CURRENT_USER.id) {
-        return true;
+        result = true;
       }
     });
-    return false;
+    return result;
+  },
+
+  isWaiting: function () {
+    var result = false;
+    this.friendees().each( function(friend) {
+      if (friend.get('friend_id') == Fridgeslam.CURRENT_USER.id) {
+        result = true;
+      }
+    });
+    return result;
   },
 
   friends: function () {
     if (this._friends) {
       return this._friends;
     } else {
-      this._friends = [];
+      this._friends = new Fridgeslam.Collections.Users();
       return this._friends;
+    }
+  },
+
+  friendees: function () {
+    if (this._friendees) {
+      return this._friendees;
+    } else {
+      this._friendees = new Fridgeslam.Collections.Users();
+      return this._friendees;
     }
   },
 
@@ -24,7 +44,7 @@ Fridgeslam.Models.User = Backbone.Model.extend({
     if (this._pendingFriendships) {
       return this._pendingFriendships;
     } else {
-      this._pendingFriendships = [];
+      this._pendingFriendships = new Fridgeslam.Collections.Friendships();
       return this._pendingFriendships;
     }
   },
@@ -33,6 +53,16 @@ Fridgeslam.Models.User = Backbone.Model.extend({
     if (response.pending_friendships) {
       this.pending_friendships().set(response.pending_friendships, { parse: true });
       delete response.pending_friendships;
+    }
+
+    if (response.friends) {
+      this.friends().set(response.friends, { parse: true });
+      delete response.friends;
+    }
+
+    if (response.friendees) {
+      this.friendees().set(response.friendees, { parse: true });
+      delete response.friendees;
     }
     return response;
   }

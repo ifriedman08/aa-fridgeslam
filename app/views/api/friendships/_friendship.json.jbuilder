@@ -1,1 +1,1 @@
-json.extract!(friendship, :friendable_id, :friend_id, :pending, :friend_username)
+json.extract!(friendship, :id, :friendable_id, :friend_id, :pending, :friend_username)

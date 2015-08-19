@@ -8,5 +8,5 @@ class Friendship < ActiveRecord::Base
     # return User.find(self.friendable_id).username unless self.friendable_id == current_user.id
   end
 
-  
+
 end
