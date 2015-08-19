@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require circles
 //= require fridgeslam
 //= require_tree ./utils
 //= require_tree ../templates

@@ -17,6 +17,7 @@
  @import "bootstrap";
 
  #content {
+   overflow-y: scroll;
    position: absolute;
    display: block;
    top: 100px;
@@ -53,11 +54,12 @@
  }
 
 div.dashboard {
-  position: fixed;
+  left: 50%;
+  position: relative;
   top: 100px;
   bottom: 0;
   right: 0;
-  left: 0;
+  transform: translateX(-40%);
 }
 
 div.dashboard-buttons {
@@ -83,6 +85,7 @@ div.dashboard a {
 }
 
 body {
+  overflow-y: scroll;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -367,7 +370,10 @@ form.solo-slam-form > div {
 }
 
 form.solo-slam-form {
-  top: 100px;
+  overflow-y: scroll;
+  width: 70%;
+  height: 70%;
+  top: 15px;
   position: relative;
   background-color: rgb(204, 204, 204);
   font-family: courier;

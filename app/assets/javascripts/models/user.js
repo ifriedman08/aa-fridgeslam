@@ -18,5 +18,22 @@ Fridgeslam.Models.User = Backbone.Model.extend({
       this._friends = [];
       return this._friends;
     }
+  },
+
+  pendingFriendships: function () {
+    if (this._pendingFriendships) {
+      return this._pendingFriendships;
+    } else {
+      this._pendingFriendships = [];
+      return this._pendingFriendships;
+    }
+  },
+
+  parse: function (response) {
+    if (response.pending_friendships) {
+      this.pending_friendships().set(response.pending_friendships, { parse: true });
+      delete response.pending_friendships;
+    }
+    return response;
   }
 });

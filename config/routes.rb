@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :dictionary, only: [:index]
     resources :users, only: [:index, :show]
+    resources :friendships, only: [:create, :update, :destroy, :index]
   end
 
   resources :users, only: [:new, :create] do

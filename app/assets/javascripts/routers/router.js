@@ -11,11 +11,21 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
     'slams/new-group': 'startGroupSlam',
     'slams/:id': 'slamShow',
     'users/:id': 'userShow',
-    'pendingfriendships': 'friendsShow'
+    'pendingfriendships': 'pendingFriendsIndex'
   },
 
-  friendsShow: function () {
-    debugger;
+  pendingFriendsIndex: function () {
+    // debugger;
+    var currentUser = new Fridgeslam.Models.User({ id: Fridgeslam.CURRENT_USER.id });
+    currentUser.fetch();
+    var collection = currentUser.pendingFriendships();
+    collection.fetch();
+
+    var friendsView = new Fridgeslam.Views.PendingFriendsIndex({
+      collection: collection
+    });
+
+    this._swapView(friendsView);
   },
 
   userShow: function (id) {
