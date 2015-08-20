@@ -12,6 +12,16 @@ Fridgeslam.Models.User = Backbone.Model.extend({
     return result;
   },
 
+  friendshipSent: function () {
+    var result = false;
+    this.get('pending_inviters').forEach( function(friend) {
+      if (friend.id == Fridgeslam.CURRENT_USER.id) {
+        result = true;
+      }
+    });
+    return result;
+  },
+
   isWaiting: function () {
     var result = false;
     this.friendees().each( function(friend) {

@@ -2,19 +2,22 @@
   <% var buttonClass = 'current-friend' %>
   <% var buttonText = 'Friended!' %>
 <% } else if (user.isWaiting()) { %>
-  <% var buttonClass = 'awaiting-friendship' %>
+  <% var buttonClass = 'accept-friendship' %>
   <% var buttonText = 'Accept Friend Request' %>
 <% } else if (user.friendshipSent()) { %>
-  <% var buttonClass = 'awaiting-friendship' %>
+  <% var buttonClass = 'friendship-sent' %>
   <% var buttonText = 'Friend Request Sent' %>
 <% } else {%>
-  <% var buttonClass = 'not-friend' %>
+  <% var buttonClass = 'send-friendship' %>
   <% var buttonText = 'Send Friendship Request' %>
 <% } %>
 
 <div class="username">
   <h1><%= user.escape('username') %>'s slams:</h1>
-  <button type="button" class="<%= buttonClass %>" name="button"><%= buttonText %></button>
+  <button type="button" data-friendship-id="<%= user.escape('friendship_id')%>" class="<%= buttonClass %>" name="button"><%= buttonText %></button>
+  <% if (user.isWaiting() && !user.isFriend()) { %>
+    <button type="button"data-friendship-id="<%= user.escape('friendship_id')%>" class="reject-friendship" name="button">Reject</button>
+  <% } %>
 </div>
 <br>
 <div class="user-slams-container">

@@ -1,9 +1,0 @@
-<ul class="requestor-list">
-  <% requestors.each(function(requestor){ %>
-    <li>
-      <a href="#/users/<%= requestor.escape('id') %>"><%= requestor.escape('username') %></a>
-      <button data-friendship-id="<%= requestor.escape('friendship_id') %>" class="accept-friendship">Accept</button>
-      <button data-friendship-id="<%= requestor.escape('friendship_id') %>" class="reject-friendship">Reject</button>
-    </li>
-  <% }) %>
-</ul>

@@ -16,6 +16,9 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ #content * {
+   font-family: courier;
+ }
  #content {
    overflow-y: scroll;
    position: absolute;
@@ -132,21 +135,6 @@ div.nav-bar img {
   top: 2%;
 }
 
-// div.nav-bar input.user-search:hover{
-//   background-color: white;
-// }
-//
-// div.nav-bar input.user-search-bar{
-//   width: 20%;
-//   position: relative;
-//   height: 40px;
-//   color: black;
-//   background-color: white;
-//   right: 20%;
-//   border-radius: 5px;
-//   z-index: 32476;
-// }
-
 div.nav-bar input {
   width: 200px;
   position: relative;
@@ -220,13 +208,6 @@ div.nav-bar a.friendships-link > * {
   display: inline-block;
 }
 
-// div.nav-bar a.friendships-link p {
-//   position: absolute;
-//   color: white;
-//   top: 50%;
-//   transform: translateY(-50%);
-// }
-
 div.nav-bar a.friendships-link {
   top: 0;
   position: absolute;
@@ -256,9 +237,11 @@ form.user-search-form > input.user-search-bar {
   z-index: 100;
   text-align: center;
   position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  /* transform: translateX(-50%); */
 }
 
 .slams-index ul {
@@ -295,10 +278,18 @@ form.user-search-form > input.user-search-bar {
   pointer-events: none;
 }
 
+div.content-holder > div{
+  width: 1000px;
+}
+
 .content-holder {
-  margin: 0 auto;
-  width: 400px;
-  height: 600px;
+  // margin: 0 auto;
+  // width: 400px;
+  // height: 600px;
+  position: fixed;
+  overflow: scroll;
+  left: 0;
+  right: 0;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
 }
@@ -319,11 +310,11 @@ form.user-search-form > input.user-search-bar {
   background: -webkit-linear-gradient(#fff, #999);
   background: -o-linear-gradient(#fff, #999);
   height: 800px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 }
 
 .close {
-  background: #606061;
+  background: #ed1313;
   color: #FFFFFF;
   line-height: 25px;
   position: absolute;
@@ -339,10 +330,12 @@ form.user-search-form > input.user-search-bar {
   -moz-box-shadow: 1px 1px 3px #000;
   -webkit-box-shadow: 1px 1px 3px #000;
   box-shadow: 1px 1px 3px #000;
+  opacity: 1;
 }
 
 .close:hover {
-  background: #00d9ff;
+  opacity: 1;
+  background: #ff0800;
 }
 
 img.new-line-icon {
@@ -464,18 +457,51 @@ button.post-slam {
   left: 50px;
 }
 
+.requests-list-container > h2 {
+  text-align: center;
+  font-family: courier;
+}
+
 .requestor-list {
-  top: 120px;
   position: absolute;
   list-style-type: none;
   font-family: courier;
-  left: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
 }
 
-.requestor-list > li {
+li.req-list-item {
+  background-color: darkgrey;
+  border: 1px black solid;
+  box-shadow: 3px 3px 3px black;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.requestor-list li {
   margin: 30px;
   font-size: 30px;
   color: black;
+}
+
+.requestor-list button {
+  right: 0;
+  transform: translateX(10px) translateY(-7px);
+  margin: 5px;
+  display: inline-block;
+  float: right;
+  border-radius: 5px;
+}
+
+.requestor-list button.reject-friendship {
+  background-color: rgb(168, 8, 42);
+  color: white;
+}
+
+.requestor-list button.accept-friendship {
+  background-color: rgb(16, 86, 126);
+  color: white;
 }
 
 .user-search-list a {
@@ -520,7 +546,12 @@ div.user-show {
   box-shadow: 3px 3px 3px;
   padding-bottom: 20px;
   transform: translateX(-50%);
-  width: 50%;
+  width: 80%;
+}
+
+.user-slams-list {
+  width: 100%;
+
 }
 
 div.user-show h1 {
@@ -530,5 +561,52 @@ div.user-show h1 {
 
 .slam-title-link {
   position: absolute;
-  left: 20px;
+  left: 35px;
+}
+
+.slam-list-item .slam-likes {
+  width: 120px;
+  text-align: right;
+  right: 5px;
+  position: absolute;
+}
+
+.slam-list-item > * {
+  padding: 15px;
+  display: inline-block;
+}
+
+.author-info {
+  // left: 190%;
+  float: right;
+  position: relative;
+  transform: translateY(20px) translateX(-20%);
+}
+
+.slam-show-container {
+  top: 5%;;
+  width: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: rgb(235, 222, 235);
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px black;
+}
+
+.slam-show-container .like-button {
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(19, 170, 47);
+}
+
+.slam-show-container * {
+  font-family: courier;
+}
+
+.slam-body-container p {
+  font-size: 24px;
 }

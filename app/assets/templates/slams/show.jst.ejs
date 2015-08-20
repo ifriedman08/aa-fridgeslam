@@ -1,7 +1,10 @@
-  <div class="">
+<div class="slam-show-container">
+  <div class="slam-show-header">
     <h2 data-id="<%= slam.escape('id')%>" class="slam-show-title"><%= slam.escape('title') %></h2>
     by <a href="#/users/<%= slam.user().escape('id') %>" class="slam-show-author"><%= slam.user().escape('username') %></a>
+    at <%= slam.escape('updated_at') %>
   </div>
+  <br>
   <div class="slam-body-container">
     <p class="slam-show-body">
       <%= slam.attributes.body && slam.attributes.body.join(' ') %>
@@ -12,4 +15,5 @@
     <p class="slam-likes"><%= slam.likes().length %> likes</p>
   </div>
   <button type="button" class="like-button" name="button" data-slam-id="<%= slam.escape('id') %>">LIKE</button>
-  <a href="#">Back to list</a>
+  <a href="#">Back to dashboard</a>
+</div>

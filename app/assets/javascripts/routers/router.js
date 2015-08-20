@@ -39,7 +39,6 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   slamShow: function (id) {
-    // debugger;
     var that = this;
     var slam = this.collection.getOrFetch(id);
 
@@ -88,7 +87,6 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
 
     this._swapView(indexView);
   },
-
 
   _swapView: function (view) {
     this.currentView && this.currentView.remove();
