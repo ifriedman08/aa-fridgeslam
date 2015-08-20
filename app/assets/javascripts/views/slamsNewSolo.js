@@ -1,5 +1,5 @@
-Fridgeslam.Views.SlamsNew = Backbone.View.extend({
-  template: JST['slams/new'],
+Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
+  template: JST['slams/new-solo'],
 
   initialize: function () {
     this.word_array = [];

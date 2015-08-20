@@ -69,8 +69,10 @@ Fridgeslam.Views.UserShow = Backbone.CompositeView.extend({
     var slams = this.model.attributes.slams;
     if (slams) {
       slams.forEach(function (slam) {
-      this.addSlamSubview(slam);
-    }.bind(this));
+        this.addSlamSubview(slam);
+      }.bind(this));
+    } else {
+      $('.user-slams-list').text('Slamlessness... so sad.');
     }
     return this;
   },

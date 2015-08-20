@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :dictionary, only: [:index]
     resources :users, only: [:index, :show]
     resources :friendships, only: [:create, :update, :destroy, :index]
+    resources :slam_memberships, only: [:create, :index]
   end
 
   resources :users, only: [:new, :create] do

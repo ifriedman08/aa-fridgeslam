@@ -610,3 +610,10 @@ div.user-show h1 {
 .slam-body-container p {
   font-size: 24px;
 }
+
+img.alone {
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

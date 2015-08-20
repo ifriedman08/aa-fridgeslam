@@ -57,12 +57,22 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
 
   startSoloSlam: function () {
     var that = this;
-    var newSlam = new Fridgeslam.Models.Slam();
-    var newSlamForm = new Fridgeslam.Views.SlamsNew({
-      model: newSlam,
+    var newSoloSlam = new Fridgeslam.Models.Slam();
+    var newSoloSlamForm = new Fridgeslam.Views.SlamsNewSolo({
+      model: newSoloSlam,
       collection: that.collection
     });
-    this._swapView(newSlamForm);
+    this._swapView(newSoloSlamForm);
+  },
+
+  startGroupSlam: function () {
+    var that = this;
+    var newGroupSlam = new Fridgeslam.Models.Slam();
+    var newGroupSlamForm = new Fridgeslam.Views.SlamsNewGroup({
+      model: newGroupSlam,
+      collection: that.collection
+    });
+    this._swapView(newGroupSlamForm);
   },
 
   dashboard: function () {

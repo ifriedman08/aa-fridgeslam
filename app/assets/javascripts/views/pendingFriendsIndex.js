@@ -20,6 +20,9 @@ Fridgeslam.Views.PendingFriendsIndex = Backbone.CompositeView.extend({
 
     this.$el.html(content);
     this.attachSubviews();
+    if (this.collection.length === 0) {
+      $('.requestor-list').append("<img class='alone' src='http://pre04.deviantart.net/3981/th/pre/f/2012/145/5/3/forever_alone_png_by_nfc_by_ninetailsfoxchan-d510mu7.png'>");
+    }
     return this;
   },
 
