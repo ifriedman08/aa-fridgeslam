@@ -24,7 +24,7 @@ Fridgeslam.Models.User = Backbone.Model.extend({
 
   isWaiting: function () {
     var result = false;
-    this.friendees().each( function(friend) {
+    this.friendees().each(function(friend) {
       if (friend.get('friend_id') == Fridgeslam.CURRENT_USER.id) {
         result = true;
       }
@@ -59,6 +59,14 @@ Fridgeslam.Models.User = Backbone.Model.extend({
     }
   },
 
+  friendship: function () {
+    if (!this._friendship) {
+      this._friendship = new Fridgeslam.Models.Friendship();
+    }
+
+    return this._friendship;
+  },
+
   parse: function (response) {
     if (response.pending_friendships) {
       this.pending_friendships().set(response.pending_friendships, { parse: true });
@@ -73,6 +81,11 @@ Fridgeslam.Models.User = Backbone.Model.extend({
     if (response.friendees) {
       this.friendees().set(response.friendees, { parse: true });
       delete response.friendees;
+    }
+
+    if (response.friendship_id) {
+      this.friendship().set({id: response.friendship_id});
+      delete response.friendship_id;
     }
     return response;
   }

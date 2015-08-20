@@ -24,6 +24,16 @@ class Slam < ActiveRecord::Base
   )
 
   has_many(
+    :board_memberships,
+  )
+
+  has_many(
+    :board_members,
+    through: :board_memberships,
+    source: :user
+  )
+
+  has_many(
     :likes
   )
 

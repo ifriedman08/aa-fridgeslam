@@ -4,11 +4,9 @@ Fridgeslam.Views.UserShow = Backbone.CompositeView.extend({
   className: 'user-show',
 
   initialize: function () {
-    this.listenTo(this.model, 'sync update', this.render);
-    this.$el.on('click', function () {
-      event.stopPropagation();
-    });
-
+    this.friendship = this.model.friendship();
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.collection, 'remove', this.render);
   },
 
   events: {
@@ -25,36 +23,39 @@ Fridgeslam.Views.UserShow = Backbone.CompositeView.extend({
       friendable_id: Fridgeslam.CURRENT_USER.id,
       friend_id: that.model.get('id')
     });
-
-    friendship.save();
-    // this.collection.fetch()
-  },
-
-  acceptFriend: function (event) {
-    event.preventDefault();
-    var $target = $(event.currentTarget);
-    var friendship = new Fridgeslam.Models.Friendship({
-      id: $target.data('friendship-id')
-    });
-    var that = this;
-    friendship.set({pending: false});
-
     friendship.save({}, {
       success: function () {
-        that.collection.remove(friendship);
+        that.model.get("pending_inviters").push({ id: Fridgeslam.CURRENT_USER.id });
+        that.render();
       }
     });
-    // this.collection.fetch()
   },
 
-  rejectFriend: function (event) {
+  acceptFriendship: function (event) {
     event.preventDefault();
-    var $target = $(event.currentTarget);
-    var friendship = new Fridgeslam.Models.Friendship({
-      id: $target.data('friendship-id')
+    var that = this;
+    this.friendship.save({ pending: false }, {
+      success: function () {
+        that.model.friends().add(new Fridgeslam.Models.User({ id: Fridgeslam.CURRENT_USER.id }));
+        that.model.collection.remove(that.model);
+        that.render();
+        $('div.friends-num').text(Number($('div.friends-num').text()) - 1);
+      }
     });
-    friendship.destroy();
-    this.render();
+  },
+
+  rejectFriendship: function (event) {
+    event.preventDefault();
+    var that = this;
+    var friendee = this.model.friendees().find(function (obj) { return obj.get("friend_id") == Fridgeslam.CURRENT_USER.id; });
+    friendee.destroy({
+      success: function () {
+        that.model.friendship().clear();
+        that.model.collection.remove(that.model);
+        that.render();
+        $('div.friends-num').text(Number($('div.friends-num').text()) - 1);
+      },
+    });
   },
 
   render: function () {

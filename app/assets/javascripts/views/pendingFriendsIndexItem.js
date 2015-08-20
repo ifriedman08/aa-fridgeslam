@@ -4,9 +4,7 @@ Fridgeslam.Views.PendingFriendsIndexItem = Backbone.CompositeView.extend({
   className: 'requests-index-item',
 
   initialize: function () {
-    // debugger
-    // this.collection.fetch();
-    // this.model.fetch();
+    this.friendship = this.model.friendship();
     this.listenTo(this.model, 'sync', this.render);
     this.$el.on('click', function () {
       event.stopPropagation();
@@ -21,27 +19,26 @@ Fridgeslam.Views.PendingFriendsIndexItem = Backbone.CompositeView.extend({
 
   acceptFriend: function (event) {
     event.preventDefault();
-    var $target = $(event.currentTarget);
-    var friendship = new Fridgeslam.Models.Friendship({
-      id: this.model.get('friendship_id')
-    });
+
     var that = this;
-    friendship.set({pending: false});
-    // that.model.fetch();
-    friendship.save({}, {
+    this.friendship.save({ pending: false }, {
       success: function () {
-        that.model.collection.remove(that.model);
+        that.collection.remove(that.model);
+        $('div.friends-num').text(Number($('div.friends-num').text()) - 1);
       }
     });
   },
 
   rejectFriend: function (event) {
     event.preventDefault();
-    var $target = $(event.currentTarget);
-    var friendship = new Fridgeslam.Models.Friendship({
-      id: this.model.get('friendship_id')
+
+    var that = this;
+    this.friendship.destroy({
+      success: function () {
+        that.collection.remove(that.model);
+        $('div.friends-num').text(Number($('div.friends-num').text()) - 1);
+      },
     });
-    friendship.destroy();
   },
 
   render: function () {

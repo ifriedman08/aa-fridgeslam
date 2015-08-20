@@ -1,4 +1,4 @@
-json.extract!(@user, :id, :username, :slams)
+json.partial! 'user', user: @user
 
 json.friends do
   json.array! @user.friends do |friend|
