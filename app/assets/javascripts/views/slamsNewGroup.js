@@ -38,27 +38,33 @@ Fridgeslam.Views.SlamsNewGroup = Backbone.CompositeView.extend({
       alert('One word at a time, please.');
     }
 
-    var newGroupSlam = new Fridgeslam.Models.Slam({
+    this.model.set({
       title: $('input.slam-title').val(),
       body: $('input.word-input').val().split(' '),
       mode: 'group',
       pending: true,
       user: Fridgeslam.CURRENT_USER.id,
+      current_slammer_id: Fridgeslam.CURRENT_USER.id,
+      slammer_ids: Fridgeslam.addedMemberIds
     });
 
-    newGroupSlam.save({},{
-      success: function () {
-        Fridgeslam.addedMemberIds = [];
-        alert('Slammin!');
-      }
-    });
-
-    var slamMemberships = new Fridgeslam.Collections.SlamMemberships();
-    Fridgeslam.addedMemberIds.forEach( function (memberId) {
-      var newMembership = new Fridgeslam.Models.SlamMembership({
-        slam_id: newGroupSlam.get('id'),
-        user_id: memberId
+    var that = this;
+    var onSave = function () {
+      var slamMemberships = new Fridgeslam.Collections.SlamMemberships();
+      Fridgeslam.addedMemberIds.forEach( function (memberId) {
+        var newMembership = new Fridgeslam.Models.SlamMembership({
+          slam_id: that.model.get('id'),
+          user_id: memberId
+        });
+        newMembership.save();
       });
+      Fridgeslam.addedMemberIds = [];
+      alert('Slammin!');
+      Backbone.history.navigate('#', { trigger: true });
+    };
+
+    this.model.save({},{
+      success: onSave
     });
   },
 

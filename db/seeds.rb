@@ -21,7 +21,7 @@ User.create!(
   email: 'martha123@aa.io',
   password_digest: "$2a$10$6ArceSoi0hupWpiLPZ1emeUh.asQZIAOGC.GRy5k9T4tlZeaTzHjK")
 
-200.times do
+70.times do
   name = Faker::Name.first_name
   user = User.new(
     username: Faker::Internet.user_name(name),
@@ -33,7 +33,7 @@ User.create!(
   end
 end
 
-1000.times do
+300.times do
   Slam.create!(
     user_id: Random.rand(User.all.length - 12) + 6,
     body: LiterateRandomizer.sentence.split +

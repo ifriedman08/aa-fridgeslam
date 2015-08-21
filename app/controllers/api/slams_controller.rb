@@ -1,5 +1,7 @@
 class Api::SlamsController < ApplicationController
   def new
+    @slam = Slam.new()
+    render :show
   end
 
   def create
@@ -9,22 +11,37 @@ class Api::SlamsController < ApplicationController
     @slam.body = params[:body]
     @slam.pending = params[:pending]
     @slam.mode = params[:mode]
+    @slam.current_slammer_id = params[:current_slammer_id]
+    @slam.slammer_ids = params[:slammer_ids]
 
-    if @slam.save
-      render :index
+    if @slam.mode == 'solo'
+      if @slam.save
+        # @slam.current_slammer_id = current_user.id
+        render :show
+      else
+        render json: @slam.errors.full_messages, status: 422
+        render :show
+      end
     else
-      flash.now[:errors] = @slam.errors.full_messages
-      render :new
+      @slam.slammer_ids = @slam.slammer_ids.rotate
+      if @slam.save
+        # @slam.current_slammer_id = @slam.member_ids.first
+        render :show
+      else
+        render json: @slam.errors.full_messages, status: 422
+        render :show
+      end
     end
   end
 
   def update
     @slam = Slam.find(params[:id])
     if @slam.update(slam_params)
-      render :index
+      @slam.member_ids = @slam.member_ids.rotate if @slam.mode == 'group'
+      render :show
     else
-      flash.now[:errors] = @slam.errors.full_messages
-      render :new
+      render json: @slam.errors.full_messages, status: 422
+      render :show
     end
   end
 
@@ -36,7 +53,7 @@ class Api::SlamsController < ApplicationController
     when 'new'
       @slams = Slam.where(pending: false).order(updated_at: :desc).limit(25).includes(:user, :likes)
     when 'pending'
-      @slams = Slam.where(pending: true, user_id: current_user.id).includes(:likes, :user).order(created_at: :desc)
+      @slams = Slam.where("pending = true AND slammer_ids[1] = ?", current_user.id).includes(:likes, :user).order(created_at: :desc)
     when 'completed'
       @slams = Slam.where(pending: false, user_id: current_user.id).includes(:likes, :user).order(created_at: :desc)
     else

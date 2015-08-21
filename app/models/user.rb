@@ -53,8 +53,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(password_digest).is_password?(password)
   end
 
-  def pending_slams
-    self.slams.select{|slam| slam.pending}
+  def pending_slams_num
+    # fail
+    # Slam.where("pending = true AND slammer_ids[1] = ?", self.id)
+    self.slams.select{|slam| slam.pending}.concat(Slam.where("pending = true AND slammer_ids[1] = ?", self.id)).length
   end
 
   def reset_session_token!

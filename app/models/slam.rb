@@ -16,6 +16,16 @@ class Slam < ActiveRecord::Base
 
   validates :title, :body, :mode, :user, presence: true
 
+  # attr_accessor :member_ids
+  after_initialize :ensure_current_user_id
+  def current_slammer
+    if self.mode == 'group'
+      self.slammer_ids.first
+    else
+      self.user_id
+    end
+  end
+
   belongs_to(
     :user,
     primary_key: :id,
@@ -24,12 +34,15 @@ class Slam < ActiveRecord::Base
   )
 
   has_many(
-    :memberships,
+    :slam_memberships,
+    primary_key: :id,
+    foreign_key: :slam_id,
+    class_name: 'SlamMembership'
   )
 
   has_many(
     :members,
-    through: :memberships,
+    through: :slam_memberships,
     source: :user
   )
 
@@ -37,4 +50,7 @@ class Slam < ActiveRecord::Base
     :likes
   )
 
+  def ensure_current_user_id
+    self.current_slammer_id ||= self.user_id
+  end
 end

@@ -6,9 +6,10 @@ Fridgeslam.Collections.Slams = Backbone.Collection.extend({
     // debugger;
     return this.filter(function(slam){
       return (
-        slam.get('user_id') === Number(Fridgeslam.CURRENT_USER.id) &&
-        slam.get('pending')
+        slam.get('current_slammer_id') === Number(Fridgeslam.CURRENT_USER.id)
       );}).length;
+      // slam.get('user_id') === Number(Fridgeslam.CURRENT_USER.id) &&
+      // slam.get('pending')) ||
   },
 
   getOrFetch: function (id) {
