@@ -53,7 +53,7 @@ class Api::SlamsController < ApplicationController
     when 'new'
       @slams = Slam.where(pending: false).order(updated_at: :desc).limit(25).includes(:user, :likes)
     when 'pending'
-      @slams = Slam.where("pending = true AND slammer_ids[1] = ?", current_user.id).includes(:likes, :user).order(created_at: :desc)
+      @slams = Slam.where("pending AND slammer_ids[ord + 1] = ?", current_user.id).includes(:likes, :user).order(created_at: :desc)
     when 'completed'
       @slams = Slam.where(pending: false, user_id: current_user.id).includes(:likes, :user).order(created_at: :desc)
     else

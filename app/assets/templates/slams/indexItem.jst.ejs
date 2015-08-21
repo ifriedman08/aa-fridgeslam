@@ -3,8 +3,14 @@
     <a href="#/slams/<%= slam.escape('id') %>" data-id="<%= slam.escape('id')%>" class="slam-title-link"><%= slam.escape('title') %></a>
     <div class="author-info"> by
       <% if (slam.escape('mode') === 'group') { %>
-        <% slam.escape('authors').forEach(function (username) { %>
-          <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
+        <% slam.attributes.slammer_ids.forEach(function (id, index) { %>
+          <% if (index === slam.attributes.slammer_ids.length - 1) { %>
+            and <a href="#/users/<%= id %>" class="slam-author-link"><%= slam.attributes.authors[index] %></a>
+          <% } else if (index === slam.attributes.slammer_ids.length - 2) { %>
+            <a href="#/users/<%= id %>" class="slam-author-link"><%= slam.attributes.authors[index] %></a>
+          <% } else { %>
+            <a href="#/users/<%= id %>" class="slam-author-link"><%= slam.attributes.authors[index] %></a>,
+          <% } %>
         <% })%>
       <% } else { %>
         <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>

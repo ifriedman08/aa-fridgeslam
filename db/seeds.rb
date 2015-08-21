@@ -24,7 +24,7 @@ User.create!(
 User.create!(
   username: 'guest123',
   email: 'guest123@aa.io',
-  password_digest: "$2a$10$RLDuQJTJHUcSbhkcYbwa1uN3lmPvANb7x0P4k6P.NBTc3JiT8bwfC")
+  password_digest: "$2a$10$l2q72AC8S2vshrRf46lSLOvga7FXUsLg1dTV82ZayB4DEiUF8uRxG")
 
 70.times do
   name = Faker::Name.first_name

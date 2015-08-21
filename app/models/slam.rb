@@ -18,6 +18,14 @@ class Slam < ActiveRecord::Base
 
   # attr_accessor :member_ids
   after_initialize :ensure_current_user_id
+  before_save :update_ord
+
+  # def filter_pending(current_id)
+  #   sql = "SELECT * FROM slams
+  #   WHERE slammer_ids[?] = ?;"
+  #   self.class.find_by_sql([sql, self.ord, current_id])
+  # end
+
   def current_slammer
     if self.mode == 'group'
       self.slammer_ids.first
@@ -27,9 +35,9 @@ class Slam < ActiveRecord::Base
   end
 
   def authors
-    result = {}
+    result = []
     self.slammer_ids.each do |i|
-      result[i] = User.find(i).username
+      result.push(User.find(i).username)
     end
     result
   end
@@ -60,5 +68,9 @@ class Slam < ActiveRecord::Base
 
   def ensure_current_user_id
     self.current_slammer_id ||= self.user_id
+  end
+
+  def update_ord
+    self.ord = (self.ord + 1) % self.slammer_ids.length
   end
 end

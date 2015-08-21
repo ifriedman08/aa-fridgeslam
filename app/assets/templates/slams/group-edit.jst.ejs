@@ -1,0 +1,23 @@
+<form class="group-slam-form">
+  <div class="punctuation-buttons">
+    <ul class="punctuation-list">
+      <li class="new-line" ><img class="new-line-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Return_arrow.svg/2000px-Return_arrow.svg.png"/></li>
+    </ul>
+  </div>
+  <div class="word-options-container">
+    <ul class="generated-word-list"></ul>
+  </div>
+  <div class="title-container">
+    <h2>Title: <%= slam.escape('title') %></h2>
+  </div>
+  <br>
+  <div class="slam-preview">
+    <%= slam.get('body').join(' ') || ''%>
+  </div>
+  <br>
+  <input class='new-word' value="" placeholder="Put the next word here!">
+  <div class="button-container">
+    <button class="submit-word">Submit word</button>
+    <button class="end-slam">End Slam and Submit</button>
+  </div>
+</form>

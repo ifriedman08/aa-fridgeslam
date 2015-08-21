@@ -1,7 +1,19 @@
 <div class="slam-show-container">
   <div class="slam-show-header">
     <h2 data-id="<%= slam.escape('id')%>" class="slam-show-title"><%= slam.escape('title') %></h2>
-    by <a href="#/users/<%= slam.user().escape('id') %>" class="slam-show-author"><%= slam.user().escape('username') %></a>
+    by <% if (slam.escape('mode') === 'group') { %>
+      <% slam.attributes.slammer_ids.forEach(function (id, index) { %>
+        <% if (index === slam.attributes.slammer_ids.length - 1) { %>
+          and <a href="#/users/<%= id %>" class="slam-author-link"><%= slam.attributes.authors[index] %></a>
+        <% } else if (index === slam.attributes.slammer_ids.length - 2) { %>
+          <a href="#/users/<%= id %>" class="slam-author-link"><%= slam.attributes.authors[index] %></a>
+        <% } else { %>
+          <a href="#/users/<%= id %>" class="slam-author-link"><%= slam.attributes.authors[index] %></a>,
+        <% } %>
+      <% })%>
+    <% } else { %>
+      <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
+    <% } %>
     at <%= slam.escape('updated_at') %>
   </div>
   <br>
@@ -10,10 +22,13 @@
       <%= slam.attributes.body && slam.attributes.body.join(' ') %>
     </p>
   </div>
-
-  <div class="slam-likes">
-    <p class="slam-likes"><%= slam.likes().length %> likes</p>
-  </div>
-  <button type="button" class="like-button" name="button" data-slam-id="<%= slam.escape('id') %>">LIKE</button>
-  <a href="#">Back to dashboard</a>
+  <% if (!slam.escape('pending')) { %>
+    <div class="slam-likes">
+      <p class="slam-likes"><%= slam.likes().length %> likes</p>
+    </div>
+    <button type="button" class="like-button" name="button" data-slam-id="<%= slam.escape('id') %>">LIKE</button>
+    <a href="#">Back to dashboard</a>
+  <% } else { %>
+    <p> PENDING </p>
+  <% } %>
 </div>
