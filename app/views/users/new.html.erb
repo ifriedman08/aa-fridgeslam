@@ -33,7 +33,7 @@
       }
 
       canvas {
-        background-image: url('/assets/sky.jpg');
+        background-image: image-url("sky.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
@@ -179,7 +179,7 @@
     </canvas>
     <div class="container">
       <a href="#openModal">
-        <img src="/assets/slam-logo.png" class="slam-logo" alt="" />
+        <%= image_tag("slam-logo.png", class: 'slam-logo')%>
       </a>
       <form class="new-user-form" action="/users/" method="post">
         <%= auth_token_input %>
