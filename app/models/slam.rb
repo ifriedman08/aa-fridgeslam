@@ -26,6 +26,14 @@ class Slam < ActiveRecord::Base
     end
   end
 
+  def authors
+    result = {}
+    self.slammer_ids.each do |i|
+      result[i] = User.find(i).username
+    end
+    result
+  end
+
   belongs_to(
     :user,
     primary_key: :id,

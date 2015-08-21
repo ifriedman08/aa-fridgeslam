@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(password_digest).is_password?(password)
   end
 
-  def pending_slams_num
+  def pending_slams
     # fail
     # Slam.where("pending = true AND slammer_ids[1] = ?", self.id)
     self.slams.select{|slam| slam.pending}.concat(Slam.where("pending = true AND slammer_ids[1] = ?", self.id)).length

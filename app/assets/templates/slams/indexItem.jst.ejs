@@ -2,7 +2,13 @@
   <div class="slam-info">
     <a href="#/slams/<%= slam.escape('id') %>" data-id="<%= slam.escape('id')%>" class="slam-title-link"><%= slam.escape('title') %></a>
     <div class="author-info"> by
-      <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
+      <% if (slam.escape('mode') === 'group') { %>
+        <% slam.escape('authors').forEach(function (username) { %>
+          <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
+        <% })%>
+      <% } else { %>
+        <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
+      <% } %>
     </div>
   </div>
   <div class="slam-likes">

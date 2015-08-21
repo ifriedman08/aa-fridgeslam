@@ -76,7 +76,9 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
   },
 
   dashboard: function () {
-    this.collection.fetch();
+    this.collection.fetch({
+      data: {order: 'pending'}
+    });
     this.$rootEl.off('click');
     var dashView = new Fridgeslam.Views.DashView({
       collection: this.collection

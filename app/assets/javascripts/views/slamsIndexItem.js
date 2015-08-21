@@ -16,6 +16,7 @@ Fridgeslam.Views.SlamIndexItem = Backbone.CompositeView.extend({
 
   render: function () {
     var that = this;
+    debugger
     var content = this.template({
       slam: that.model
     });

@@ -10,12 +10,12 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
     }
   },
 
-  members: function () {
-    if (this._members) {
-      return this._members;
+  authors: function () {
+    if (this.authors) {
+      return this.authors;
     } else {
-      this._members = new Fridgeslam.Collections.Users();
-      return this._members;
+      this.authors = {};
+      return this.authors;
     }
   },
 
@@ -40,6 +40,10 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
     if (response.members) {
       this.members().set(response.members);
       delete response.members;
+    }
+    if (response.authors) {
+      this.authors().set(response.authors);
+      delete response.authors;
     }
     return response;
   }

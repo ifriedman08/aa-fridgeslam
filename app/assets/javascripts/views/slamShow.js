@@ -26,7 +26,7 @@ Fridgeslam.Views.SlamShow = Backbone.View.extend({
     l.save({}, {
       success: function () {
         // debugger;
-        if (this.model.likes().length === 0 || this.model.likes().last().get('user_id') != l.get('user_id')) {
+        if ((this.model.likes().length === 0 || this.model.likes().last().get('user_id') != l.get('user_id')) && this.model.get('user_id') != Number(Fridgeslam.CURRENT_USER.id)) {
           this.model.likes().add(l);
         }
         // this.render();

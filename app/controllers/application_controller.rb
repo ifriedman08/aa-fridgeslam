@@ -27,6 +27,6 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless signed_in?
   end
 
-  WORDS = File.readlines('/Users/Grawf/Documents/fridgeslam/app/assets/wordlist.txt')
+  WORDS = File.readlines("#{Rails.root}/app/assets/wordlist.txt")
   WORDS.map! {|word| word[0...word.length-1]}
 end
