@@ -20,7 +20,9 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
       body: $('div.slam-preview').html().split(' '),
       mode: 'solo',
       pending: false,
-      user: Fridgeslam.CURRENT_USER.id
+      user: Fridgeslam.CURRENT_USER.id,
+      current_slammer_id: Fridgeslam.CURRENT_USER.id,
+      slammer_ids: [Fridgeslam.CURRENT_USER.id]
     };
     var that = this;
     this.model.save(attrs, {
@@ -41,7 +43,9 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
       body: $('div.slam-preview').html().split(' '),
       mode: 'solo',
       pending: true,
-      user: Fridgeslam.CURRENT_USER.id
+      user: Fridgeslam.CURRENT_USER.id,
+      current_slammer_id: Fridgeslam.CURRENT_USER.id,
+      slammer_ids: [Fridgeslam.CURRENT_USER.id]
     };
     var that = this;
     this.model.set(attrs);

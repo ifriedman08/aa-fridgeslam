@@ -5,10 +5,10 @@ Fridgeslam.Views.SlamShow = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model._likes, 'add', this.render);
-    this.$el.on('click', function () {
-      event.stopPropagation();
-    });
+    this.listenTo(this.model.likes(), 'add', this.render);
+    // this.$el.on('click', function () {
+    //   event.stopPropagation();
+    // });
   },
 
   events: {
@@ -25,22 +25,22 @@ Fridgeslam.Views.SlamShow = Backbone.View.extend({
       'user_id': Number(Fridgeslam.CURRENT_USER.id)});
     l.save({}, {
       success: function () {
-        this.model._likes.add(l);
-        this.render();
+        // debugger;
+        if (this.model.likes().length === 0 || this.model.likes().last().get('user_id') != l.get('user_id')) {
+          this.model.likes().add(l);
+        }
+        // this.render();
     }.bind(this)
   });
   },
 
   render: function () {
-    // this.model.fetch();
     var that = this;
     var content = this.template({
       slam: that.model
     });
 
     this.$el.html(content);
-    // this.attachSubviews();
-
     return this;
   }
 });

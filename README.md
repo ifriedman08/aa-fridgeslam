@@ -6,17 +6,18 @@ Fridgeslam: inspired by the wordsmiths at Urban Dictionary, Fridgeslam is a plac
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Root = Slam index
-- [ ] Create sessions (log in)
-- [ ] Create solo slams
-- [ ] Post solo slams
-- [ ] View slams
-- [ ] Add friends
+- [x] Create accounts
+- [x] Root = Slam index/Dashboard
+- [x] Create sessions (log in)
+- [x] Create solo slams
+- [x] Post solo slams
+- [x] View slams
+- [x] User search slams
+- [x] Add friends
 - [ ] Create group slams with friends
-- [ ] Like finished slams
-- [ ] Slam rankings page
-- [ ] Newest slams page
+- [x] Like finished slams
+- [x] Slam rankings page
+- [x] Newest slams page
 
 ## Design Docs
 * [View Wireframes][views]

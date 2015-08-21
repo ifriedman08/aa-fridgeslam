@@ -184,6 +184,9 @@
       <form class="new-user-form" action="/users/" method="post">
         <%= auth_token_input %>
         <h1>New User Sign Up</h1>
+        <p>
+          (click logo above to find out more)
+        </p>
         <p class="errors"><%= flash[:errors].join("<br>").html_safe if flash[:errors] %></p>
         <input type="text" name="user[username]" placeholder="Pick a username" value="<%= @user.username%>">
         <br>
