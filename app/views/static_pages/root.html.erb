@@ -1,5 +1,5 @@
 <div class="nav-bar">
-  <a href="/#/"><img src="assets/white-slam-logo.png" alt="" /></a>
+  <a href="/#/"><%= image_tag("white-slam-logo.png")%></a>
 
   <h1><%= current_user.username %>'s profile</h1>
   <form class="user-search-form" action="api/users" method="get">
@@ -7,7 +7,7 @@
   </form>
   <a class="friendships-link" href="/#/pendingfriendships">
     <div class="friends-div">
-      <img src="assets/friends.png" alt="" />
+      <%= image_tag("friends.png")%>
       <div class="friends-num">
         <%= current_user.pending_invited_by.length unless current_user.pending_invited_by.length == 0 %>
       </div>
