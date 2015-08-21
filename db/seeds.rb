@@ -21,6 +21,11 @@ User.create!(
   email: 'martha123@aa.io',
   password_digest: "$2a$10$6ArceSoi0hupWpiLPZ1emeUh.asQZIAOGC.GRy5k9T4tlZeaTzHjK")
 
+User.create!(
+  username: 'guest123',
+  email: 'guest123@aa.io',
+  password_digest: "$2a$10$RLDuQJTJHUcSbhkcYbwa1uN3lmPvANb7x0P4k6P.NBTc3JiT8bwfC")
+
 70.times do
   name = Faker::Name.first_name
   user = User.new(
