@@ -43,7 +43,12 @@ Fridgeslam.Routers.Router = Backbone.Router.extend({
     var slam = new Fridgeslam.Models.Slam({id: id});
     slam.fetch({
       success: function () {
-        if (slam.get('user_id') === Fridgeslam.CURRENT_USER.id && slam.get('pending') && slam.escape('mode') === 'solo') {
+        if (slam.get('user_id') !== Fridgeslam.CURRENT_USER.id && !slam.get('pending')) {
+          var slamShow = new Fridgeslam.Views.SlamShow({
+            model: slam,
+          });
+          that._swapView(slamShow);
+        } else if (slam.get('user_id') === Fridgeslam.CURRENT_USER.id && slam.get('pending') && slam.escape('mode') === 'solo') {
           var slamEdit = new Fridgeslam.Views.SlamsEdit({
             model: slam,
           });
