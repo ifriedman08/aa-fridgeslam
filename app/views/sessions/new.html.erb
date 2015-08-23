@@ -32,21 +32,6 @@
       animation-direction: alternate;
     }
 
-      canvas {
-        background-image: image-url("sky.jpg");
-        background-size:   cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        position:fixed;
-        top:0;
-        right:0;
-        bottom:0;
-        left:0;
-        margin:0;
-        box-sizing:border-box;
-        height:auto;
-      }
-
       form a {
         text-decoration: none;
       }
@@ -82,25 +67,9 @@
 
       div.container {
         width: 500px;
-        top: 45%;
+        margin: auto;
         display: block;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        /*background-color: cyan;*/
-      }
-
-      form.new-session-form {
-        /*border-radius: 15px;
-        box-shadow: 5px 5px 10px black;
-        font-family: courier;
-        background-color: cyan;
-        text-align: center;
-        width:  100%;
-        padding: 15px;
-        box-sizing: border-box;
-        top: 40%;*/
-        /*border: 3px solid black;*/*/
+        padding: 20px;
       }
 
       div.sign-in-box {
@@ -112,8 +81,7 @@
         width:  100%;
         padding: 15px;
         box-sizing: border-box;
-        top: 40%;*/
-        border: 3px solid black;
+        top: 40%;
       }
 
       .errors {
@@ -133,6 +101,7 @@
 
       .modalDialog {
           position: fixed;
+          overflow: scroll;
           font-family: courier;
           text-align: center;
           top: 0;
@@ -150,6 +119,7 @@
       .modalDialog:target {
           opacity:1;
           pointer-events: auto;
+          height: auto;
       }
       .modalDialog > div {
           width: 600px;
@@ -162,6 +132,7 @@
           background: -webkit-linear-gradient(#fff, #999);
           background: -o-linear-gradient(#fff, #999);
       }
+
       .close {
           background: #606061;
           color: #FFFFFF;
@@ -180,8 +151,9 @@
           -webkit-box-shadow: 1px 1px 3px #000;
           box-shadow: 1px 1px 3px #000;
       }
+
       .close:hover {
-          background: #00d9ff;
+          background: #be1212;
       }
 
     </style>
@@ -226,7 +198,7 @@
       </div>
     </div>
     <div id="openModal" class="modalDialog">
-      <div>	<a href="#close" title="Close" class="close">X</a>
+      <div>	<a href="#close" title="Close" class="close">&times</a>
         <h2>About FridgeSlam</h2>
         <p>
           Write poems.

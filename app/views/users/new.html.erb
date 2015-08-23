@@ -19,8 +19,16 @@
         }
       }
 
-      img:hover {
-        -webkit-animation-name: hvr-pulse-grow;
+      body {
+        background: image-url('steel.jpg') no-repeat center center fixed;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+      }
+
+      a:hover {
+        /*-webkit-animation-name: hvr-pulse-grow;
         animation-name: hvr-pulse-grow;
         -webkit-animation-duration: 0.3s;
         animation-duration: 0.3s;
@@ -29,24 +37,9 @@
         -webkit-animation-iteration-count: infinite;
         animation-iteration-count: infinite;
         -webkit-animation-direction: alternate;
-        animation-direction: alternate;
+        animation-direction: alternate;*/
       }
-    
 
-      canvas {
-        background-image: url(<%= image_path("sky.jpg") %>);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        position:fixed;
-        top:0;
-        right:0;
-        bottom:0;
-        left:0;
-        margin:0;
-        box-sizing:border-box;
-        height: auto;
-      }
 
       form a {
         text-decoration: none;
@@ -83,11 +76,9 @@
 
       div.container {
         width: 500px;
-        top: 45%;
+        margin: auto;
         display: block;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
+        padding: 20px;
       }
 
       form {
@@ -120,6 +111,7 @@
 
       .modalDialog {
           position: fixed;
+          overflow: scroll;
           font-family: courier;
           text-align: center;
           top: 0;
@@ -137,6 +129,7 @@
       .modalDialog:target {
           opacity:1;
           pointer-events: auto;
+          height: auto;
       }
       .modalDialog > div {
           width: 600px;
@@ -149,6 +142,7 @@
           background: -webkit-linear-gradient(#fff, #999);
           background: -o-linear-gradient(#fff, #999);
       }
+
       .close {
           background: #606061;
           color: #FFFFFF;
@@ -167,6 +161,7 @@
           -webkit-box-shadow: 1px 1px 3px #000;
           box-shadow: 1px 1px 3px #000;
       }
+
       .close:hover {
           background: #be1212;
       }

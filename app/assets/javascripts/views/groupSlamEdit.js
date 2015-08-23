@@ -16,7 +16,6 @@ Fridgeslam.Views.GroupSlamsEdit = Backbone.View.extend({
   postSlam: function (event) {
     event.preventDefault();
     $input = $('.new-word');
-    // debugger
     if ($input.val().split(' ').length > 1) {
       alert('One word at a time, please.');
     } else {
