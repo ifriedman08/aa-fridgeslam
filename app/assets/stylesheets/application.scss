@@ -63,7 +63,9 @@
 
 div.dashboard-buttons {
   top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
   position: absolute;
 }
 
