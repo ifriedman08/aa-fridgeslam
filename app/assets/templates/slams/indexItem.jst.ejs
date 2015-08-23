@@ -12,8 +12,10 @@
             <a href="#/users/<%= id %>" class="slam-author-link"><%= slam.attributes.authors[index] %></a>,
           <% } %>
         <% })%>
+        <%= jQuery.timeago(slam.escape('updated_at')) %>
       <% } else { %>
         <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
+        <%= jQuery.timeago(slam.escape('updated_at')) %>
       <% } %>
     </div>
   </div>
