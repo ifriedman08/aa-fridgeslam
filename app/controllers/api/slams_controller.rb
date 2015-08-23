@@ -13,6 +13,7 @@ class Api::SlamsController < ApplicationController
     @slam.mode = params[:mode]
     @slam.current_slammer_id = params[:current_slammer_id]
     @slam.slammer_ids = params[:slammer_ids]
+    @slam.ord = 0
 
     if @slam.mode == 'solo'
       if @slam.save

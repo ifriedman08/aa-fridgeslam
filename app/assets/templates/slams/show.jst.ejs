@@ -14,7 +14,7 @@
     <% } else { %>
       <a href="#/users/<%= slam.user().escape('id') %>" class="slam-author-link"><%= slam.user().escape('username') %></a>
     <% } %>
-    at <%= slam.escape('updated_at') %>
+    <%= jQuery.timeago(new Date()) %>
   </div>
   <br>
   <div class="slam-body-container">

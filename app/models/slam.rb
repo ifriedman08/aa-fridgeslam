@@ -20,12 +20,6 @@ class Slam < ActiveRecord::Base
   after_initialize :ensure_current_user_id
   before_update :update_ord
 
-  # def filter_pending(current_id)
-  #   sql = "SELECT * FROM slams
-  #   WHERE slammer_ids[?] = ?;"
-  #   self.class.find_by_sql([sql, self.ord, current_id])
-  # end
-
   def current_slammer
     if self.mode == 'group'
       self.slammer_ids.first
