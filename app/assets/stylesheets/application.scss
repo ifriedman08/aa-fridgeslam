@@ -62,21 +62,21 @@
  }
 
 div.dashboard {
-  left: 50%;
+  // left: 50%;
   position: relative;
-  top: 100px;
-  bottom: 0;
-  right: 0;
-  transform: translateX(-40%);
+  height: 100%;
+
 }
 
 div.dashboard-buttons {
   display: block;
   position: relative;
+  width: 1200px;
 }
 
 div.dashboard a {
   position: relative;
+  display: inline-block;
   padding: 10px 0;
   font-family: courier;
   font-size: 45px;
@@ -93,7 +93,6 @@ div.dashboard a {
 }
 
 body {
-  overflow-y: scroll;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -104,6 +103,8 @@ body {
 canvas {
   background-attachment: fixed;
   z-index: 0;
+  width: 110%;
+  height: 110%;
   background-image: image-url('sky.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -418,7 +419,7 @@ div.slam-preview {
   border-top: rgb(77, 77, 77) 1px solid;
   border-left: rgb(77, 77, 77) 1px solid;
   background-color: white;
-  width: 600px;
+  width: 40%;
   height: 500px;
 }
 
@@ -427,7 +428,7 @@ input.slam-title {
   text-align: right;
   font-size: 36px;
   border-radius: 10px;
-  width: 640px;
+  width: 350px;
   height: 60px;
 }
 
@@ -594,9 +595,8 @@ ul.slam-list {
 
 .author-info {
   // left: 190%;
-  float: right;
   position: relative;
-  transform: translateY(20px) translateX(-20%);
+  transform: translateY(20px) translateX(-10px);
 }
 
 .slam-show-container {
@@ -636,8 +636,8 @@ img.alone {
 
 .group-slam-form {
   position: absolute;
-  height: 400px;
-  width: 600px;
+  height: 500px;
+  width: 800px;
   background-color: darkgray;
   padding: 30px;
   border: 1px solid black;
@@ -669,6 +669,11 @@ button.submit-group-word{
   background-color: cornflowerblue;
 }
 
+.group-slam-form .slam-preview{
+  width: 35%;
+  height: 80%;
+}
+
 .group-slam-form .slam-title{
   width: 300px;
   float: right;
@@ -683,4 +688,22 @@ button.submit-group-word{
   width: 300px;
   font-size: 22px;
   border-radius: 10px;
+}
+
+input.new-word{
+  height: 70px;
+  width: 30%;
+  border: 1px black solid;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.group-slam-form .submit-word{
+  border-radius: 10px;
+  background-color: cornflowerblue;
+}
+
+.group-slam-form .end-slam{
+  border-radius: 10px;
+  background-color: #79196c;
 }

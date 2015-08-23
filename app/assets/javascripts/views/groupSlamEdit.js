@@ -15,21 +15,18 @@ Fridgeslam.Views.GroupSlamsEdit = Backbone.View.extend({
 
   postSlam: function (event) {
     event.preventDefault();
-    var attrs = {
-      title: $('input.slam-title').val(),
-      body: $('div.slam-preview').html().split(' '),
-      pending: false
-    };
-    var that = this;
-    this.model.save(attrs, {
-      success: function () {
-        alert('posted!');
-        Backbone.history.navigate('#', {trigger: true});
-      },
-      error: function () {
-        alert("Body and title can't be blank.");
-      }
-    });
+    $input = $('.new-word');
+    // debugger
+    if ($input.val().split(' ').length > 1) {
+      alert('One word at a time, please.');
+    } else {
+      this.word_array = this.word_array.concat($input.val().split(' '));
+      this.model.save({body: this.word_array, pending: false}, {
+        success: function () {
+          Backbone.history.navigate('#', {trigger: true});
+        }
+      });
+    }
   },
 
   addNewLine: function (event) {
@@ -41,20 +38,16 @@ Fridgeslam.Views.GroupSlamsEdit = Backbone.View.extend({
     }
   },
 
-  addWord: function () {
+  addWord: function (event) {
+    event.preventDefault();
     $input = $('.new-word');
     // debugger
     if ($input.val().split(' ').length > 1) {
       alert('One word at a time, please.');
     } else {
-      this.word_array.push($input.val().split(' '));
-      var attrs = {
-        body: this.word_array.join(' ')
-      };
-      this.model.save(attrs, {
-        patch: true,
+      this.word_array = this.word_array.concat($input.val().split(' '));
+      this.model.save({body: this.word_array}, {
         success: function () {
-          alert('saved!');
           Backbone.history.navigate('#', {trigger: true});
         }
       });

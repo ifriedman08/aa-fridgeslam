@@ -18,7 +18,7 @@ class Slam < ActiveRecord::Base
 
   # attr_accessor :member_ids
   after_initialize :ensure_current_user_id
-  before_save :update_ord
+  before_update :update_ord
 
   # def filter_pending(current_id)
   #   sql = "SELECT * FROM slams

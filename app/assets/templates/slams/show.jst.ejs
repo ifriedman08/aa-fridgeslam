@@ -22,7 +22,7 @@
       <%= slam.attributes.body && slam.attributes.body.join(' ') %>
     </p>
   </div>
-  <% if (!slam.escape('pending')) { %>
+  <% if (!slam.get('pending')) { %>
     <div class="slam-likes">
       <p class="slam-likes"><%= slam.likes().length %> likes</p>
     </div>
