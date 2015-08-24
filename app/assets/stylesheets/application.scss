@@ -275,10 +275,7 @@ div.content-holder > div{
 }
 
 .content-holder {
-  // margin: 0 auto;
-  // width: 400px;
-  // height: 600px;
-  position: fixed;
+  position: absolute;
   overflow: scroll;
   left: 0;
   right: 0;
@@ -356,20 +353,20 @@ form.solo-slam-form > div {
 }
 
 form.solo-slam-form {
-  overflow-y: scroll;
-  width: 70%;
-  height: 70%;
-  top: 15px;
-  position: relative;
-  background-color: rgb(204, 204, 204);
-  font-family: courier;
-  font-size: 32px;
-  border-radius: 10px;
-  width: 90%;
-  height: 700px;
-  margin: auto;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px black;
+    // overflow-y: scroll;
+    top: 15px;
+    position: absolute;
+    background-color: #cccccc;
+    font-family: courier;
+    font-size: 32px;
+    border-radius: 10px;
+    width: 90%;
+    height: 900px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
 }
 
 form.solo-slam-form li{
@@ -382,7 +379,7 @@ li.punctuation {
 }
 
 ul.generated-word-list {
-  width: 300px;
+  width: 350px;
 }
 
 li.generated-word {

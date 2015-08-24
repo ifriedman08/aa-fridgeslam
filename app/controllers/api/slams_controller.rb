@@ -17,7 +17,6 @@ class Api::SlamsController < ApplicationController
 
     if @slam.mode == 'solo'
       if @slam.save
-        # @slam.current_slammer_id = current_user.id
         render :show
       else
         render json: @slam.errors.full_messages, status: 422
@@ -26,7 +25,6 @@ class Api::SlamsController < ApplicationController
     else
       @slam.slammer_ids = @slam.slammer_ids.rotate
       if @slam.save
-        # @slam.current_slammer_id = @slam.member_ids.first
         render :show
       else
         render json: @slam.errors.full_messages, status: 422
@@ -49,14 +47,15 @@ class Api::SlamsController < ApplicationController
   def index
     case params[:order]
     when 'top'
-      # @slams = Slam.where(pending: false).joins(:likes).group('slams.id').order("COUNT(likes.id) DESC")
       @slams = Slam.where(pending: false).joins("LEFT OUTER JOIN likes ON slams.id = likes.slam_id").includes(:user, :likes).group('slams.id').order("COUNT(likes.id) DESC").limit(25)
     when 'new'
       @slams = Slam.where(pending: false).order(updated_at: :desc).limit(25).includes(:user, :likes)
     when 'pending'
-      @slams = Slam.where("pending AND slammer_ids[ord + 1] = ?", current_user.id).includes(:likes, :user).order(created_at: :desc)
+      @slams = Slam.where("pending AND slammer_ids[ord + 1] = ?", current_user.id).includes(:likes, :user).order(created_at: :desc) +
+               Slam.where(pending: true).joins(:slam_memberships).where(slam_memberships: {user_id: current_user.id}).includes(:likes, :user).order(created_at: :desc)
     when 'completed'
-      @slams = Slam.where(pending: false, user_id: current_user.id).includes(:likes, :user).order(created_at: :desc)
+      @slams = Slam.where(pending: false, user_id: current_user.id).includes(:likes, :user).order(created_at: :desc) +
+               Slam.where(pending: false).joins(:slam_memberships).where(slam_memberships: {user_id: current_user.id}).includes(:likes, :user).order(created_at: :desc)
     else
       @slams = Slam.includes(:likes, :user).last(25)
     end

@@ -22,13 +22,16 @@
       <%= slam.attributes.body && slam.attributes.body.join(' ') %>
     </p>
   </div>
-  <% if (!slam.get('pending')) { %>
+  <% if (!slam.get('pending') && !slam.isMember()) { %>
     <div class="slam-likes">
       <p class="slam-likes"><%= slam.likes().length %> likes</p>
     </div>
     <button type="button" class="like-button" name="button" data-slam-id="<%= slam.escape('id') %>">LIKE</button>
     <a href="#">Back to dashboard</a>
+  <% } else if (!slam.get('pending') && slam.isMember()) { %>
+    <a href="#">Back to dashboard</a>
   <% } else { %>
-    <p> PENDING </p>
+    <p> (PENDING: It is <%= slam.attributes.authors[slam.attributes.ord] %>'s turn)</p>
+    <a href="#">Back to dashboard</a>
   <% } %>
 </div>

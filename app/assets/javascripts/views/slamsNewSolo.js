@@ -62,6 +62,7 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
 
   addWord: function (event) {
     event.preventDefault();
+    var that = this;
     $target = $(event.currentTarget);
     if ($target.attr('class') === "new-line") {
       var word = "<br>";
@@ -72,7 +73,22 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
       this.refreshWordList();
     }
     this.word_array.push(word);
-    $('div.slam-preview').html(this.word_array.join(' '));
+    this.body_string = '';
+    this.word_array.forEach(function (word, index) {
+      if (index === 0 ||
+          word === '.'||
+          word === ','||
+          word === ':'||
+          word === ';'||
+          word === '!'||
+          word === '?' ) {
+        that.body_string += word;
+      } else {
+        that.body_string += ' ' + word;
+      }
+    });
+    $('div.slam-preview').empty();
+    $('div.slam-preview').html(this.body_string);
   },
 
   refreshWordList: function () {

@@ -28,6 +28,16 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
     }
   },
 
+  isMember: function () {
+    result = false;
+    this.attributes.slammer_ids.forEach(function (slammer_id) {
+      if (slammer_id === Number(Fridgeslam.CURRENT_USER.id)) {
+        result = true;
+      }
+    });
+    return result;
+  },
+
   parse: function (response) {
     if (response.user) {
       this.user().set(response.user, { parse: true });
@@ -37,10 +47,6 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
       this.likes().set(response.likes);
       delete response.likes;
     }
-    // if (response.authors) {
-    //   this._authors.set(response.authors);
-    //   delete response.authors;
-    // }
     return response;
   }
 });
