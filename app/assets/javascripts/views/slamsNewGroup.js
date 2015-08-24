@@ -6,7 +6,6 @@ Fridgeslam.Views.SlamsNewGroup = Backbone.CompositeView.extend({
   },
 
   events: {
-    // 'click li': 'toggleMembership',
     'click button.submit-group-word': 'startGroupSlam',
     'click button.save-slam': 'saveSlam'
   },
@@ -26,16 +25,32 @@ Fridgeslam.Views.SlamsNewGroup = Backbone.CompositeView.extend({
   startGroupSlam: function (event) {
     event.preventDefault();
     if ($('input.slam-title').val() === '') {
-      alert("Don't forget a title!");
+      $('.nav-bar').notify("Don't forget a title!", {
+        arrowShow: false,
+        position: 'bottom center',
+        className: 'error'
+      });
     }
     if ($('input.word-input').val() === '') {
-      alert("Don't forget to pick the first word!");
+      $('.nav-bar').notify("Don't forget to pick the first word!", {
+        arrowShow: false,
+        position: 'bottom center',
+        className: 'error'
+      });
     }
     if (Fridgeslam.addedMemberIds.length === 1 ) {
-      alert("Don't forget to add at least one other member!");
+      $('.nav-bar').notify("Don't forget to add at least one other member!", {
+        arrowShow: false,
+        position: 'bottom center',
+        className: 'error'
+      });
     }
     if ($('input.word-input').val().split(' ').length > 1) {
-      alert('One word at a time, please.');
+      $('.nav-bar').notify('One word at a time, please.', {
+        arrowShow: false,
+        position: 'bottom center',
+        className: 'error'
+      });
     }
 
     this.model.set({
@@ -59,8 +74,12 @@ Fridgeslam.Views.SlamsNewGroup = Backbone.CompositeView.extend({
         newMembership.save();
       });
       Fridgeslam.addedMemberIds = [];
-      alert('Slammin!');
       Backbone.history.navigate('#', { trigger: true });
+      $('.nav-bar').notify( 'Sarted your Group Slam! Find it in your Finished Slams.', {
+        arrowShow: false,
+        position: 'bottom center',
+        className: 'success'
+      });
     };
 
     this.model.save({},{

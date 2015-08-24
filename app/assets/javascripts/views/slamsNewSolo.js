@@ -27,8 +27,12 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
     var that = this;
     this.model.save(attrs, {
       success: function () {
-        alert('posted!');
         Backbone.history.navigate('#', {trigger: true});
+        $('.nav-bar').notify( 'Saved your Solo Slam! Find it in your Finished Slams.', {
+          arrowShow: false,
+          position: 'bottom center',
+          className: 'success'
+        });
       },
       error: function () {
         alert("Body and title can't be blank.");
@@ -51,7 +55,11 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
-        alert('saved!');
+        $('.nav-bar').notify( 'Saved your Solo Slam! Find it in your Pending Slams.', {
+          arrowShow: false,
+          position: 'bottom center',
+          className: 'success'
+        });
         Backbone.history.navigate('#', {trigger: true});
       },
       error: function () {

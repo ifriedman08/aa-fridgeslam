@@ -23,6 +23,11 @@ Fridgeslam.Views.GroupSlamsEdit = Backbone.View.extend({
       this.model.save({body: this.word_array, pending: false}, {
         success: function () {
           Backbone.history.navigate('#', {trigger: true});
+          $('.nav-bar').notify("Your Group Slam has been posted!", {
+            arrowShow: false,
+            position: 'bottom center',
+            className: 'success'
+          });
         }
       });
     }
@@ -48,6 +53,11 @@ Fridgeslam.Views.GroupSlamsEdit = Backbone.View.extend({
       this.model.save({body: this.word_array}, {
         success: function () {
           Backbone.history.navigate('#', {trigger: true});
+          $('.nav-bar').notify("Your word was added to the Group Slam!", {
+            arrowShow: false,
+            position: 'bottom center',
+            className: 'success'
+          });
         }
       });
     }
