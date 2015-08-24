@@ -14,7 +14,7 @@ Fridgeslam: inspired by the wordsmiths at Urban Dictionary, Fridgeslam is a plac
 - [x] View slams
 - [x] User search slams
 - [x] Add friends
-- [ ] Create group slams with friends
+- [x] Create group slams with friends
 - [x] Like finished slams
 - [x] Slam rankings page
 - [x] Newest slams page
@@ -56,12 +56,10 @@ Lastly, I will implement a 'like'-based ranking system. Users (only those regist
 ### Bonus Features (TBD)
 - [ ] 'Slam'-offs
 - [ ] Follow your favorite slammers
-- [ ] Pagination/infinite scroll
 - [ ] User ranking page
 - [ ] Share via Facebook/Twitter/email
 - [ ] Multiple sessions/session management
 - [ ] User avatars
-- [ ] Typeahead search bar
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
