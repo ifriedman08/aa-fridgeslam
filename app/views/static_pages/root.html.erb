@@ -3,7 +3,7 @@
 
   <h1>Welcome, <%= current_user.username %>!</h1>
   <form class="user-search-form" action="api/users" method="get">
-    <input class="user-search-bar" type="text" name="user[username]" value="" placeholder="User search">
+    <input class="user-search-bar" type="text" name="user[username]" value="" placeholder="User search" onfocus="this.placeholder = ''">
   </form>
   <a class="friendships-link" href="/#/pendingfriendships">
     <div class="friends-div">

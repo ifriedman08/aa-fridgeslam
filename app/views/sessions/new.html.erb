@@ -190,9 +190,9 @@
           (click logo above to find out more)
         </p>
         <p class="errors"><%= flash[:errors].join("<br>").html_safe if flash[:errors] %></p>
-        <input type="text" name="user[username]" placeholder="Enter username">
+        <input type="text" name="user[username]" placeholder="Enter username" onfocus="this.placeholder = ''">
         <br>
-        <input type="password" name="user[password]" placeholder="Enter password">
+        <input type="password" name="user[password]" placeholder="Enter password" onfocus="this.placeholder = ''">
         <br>
         <br>
         <input type="submit" class="button" id="submit" name="name" value="Log In">
