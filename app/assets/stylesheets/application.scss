@@ -25,14 +25,15 @@
  }
 
  #content {
-   overflow-y: scroll;
-   position: absolute;
-   display: block;
-   top: 15%;
-   bottom: 0;
-   left: 0;
-   right: 0;
- }
+  overflow-y: scroll;
+  position: absolute;
+  display: block;
+  top: 5px;
+  bottom: 0;
+  left: 0;
+  z-index: -4;
+  right: 0;
+}
 
  @-webkit-keyframes hvr-pulse-grow {
    to {
