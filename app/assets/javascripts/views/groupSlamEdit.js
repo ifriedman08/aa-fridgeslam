@@ -17,7 +17,11 @@ Fridgeslam.Views.GroupSlamsEdit = Backbone.View.extend({
     event.preventDefault();
     $input = $('.new-word');
     if ($input.val().split(' ').length > 1) {
-      alert('One word at a time, please.');
+      $('.nav-bar').notify( "One word at a time, please.", {
+        arrowShow: false,
+        position: 'bottom center',
+        className: 'error'
+      });
     } else {
       this.word_array = this.word_array.concat($input.val().split(' '));
       this.model.save({body: this.word_array, pending: false}, {
@@ -47,7 +51,11 @@ Fridgeslam.Views.GroupSlamsEdit = Backbone.View.extend({
     $input = $('.new-word');
     // debugger
     if ($input.val().split(' ').length > 1) {
-      alert('One word at a time, please.');
+      $('.nav-bar').notify( 'One word at a time, please.', {
+        arrowShow: false,
+        position: 'bottom center',
+        className: 'error'
+      });
     } else {
       this.word_array = this.word_array.concat($input.val().split(' '));
       this.model.save({body: this.word_array}, {

@@ -35,7 +35,11 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
         });
       },
       error: function () {
-        alert("Body and title can't be blank.");
+        $('.nav-bar').notify( "Body and/or title can't be blank.", {
+          arrowShow: false,
+          position: 'bottom center',
+          className: 'error'
+        });
       }
     });
   },
@@ -63,7 +67,11 @@ Fridgeslam.Views.SlamsNewSolo = Backbone.View.extend({
         Backbone.history.navigate('#', {trigger: true});
       },
       error: function () {
-        alert("Body and title can't be blank.");
+        $('.nav-bar').notify( "Body and/or title can't be blank.", {
+          arrowShow: false,
+          position: 'bottom center',
+          className: 'error'
+        });
       }
     });
   },
