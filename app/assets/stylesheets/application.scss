@@ -104,6 +104,7 @@ body {
 
 
 div.nav-bar {
+  z-index: 9999;
   position: absolute;
   display: block;
   width: 100%;
@@ -127,23 +128,12 @@ div.nav-bar img {
   top: 2%;
 }
 
-div.logout-button {
-    padding-top: 1%;
-}
-
 div.nav-bar input {
   width: 200px;
   position: relative;
-  height: 15%;
-  float: right;
-  font-family: courier;
-  border: none;
-  text-align: center;
+  height: 100%;
   background-color: inherit;
-  font-size: 28px;
-  font-family: courier;
-  color: white;
-  cursor: pointer;
+  border: none;
 }
 
 div.logout-button {
@@ -166,6 +156,11 @@ div.nav-bar h1{
   position: absolute;
   top: 5%;
   left: 35%;
+}
+
+form.button_to {
+  height: 100%;
+  top: 0;
 }
 
 div.friends-div > img {
@@ -364,19 +359,17 @@ form.solo-slam-form > div {
 
 form.solo-slam-form {
     // overflow-y: scroll;
-    top: 15px;
-    position: absolute;
-    background-color: #cccccc;
+    top: 150px;
+    position: relative;
+    // background-color: #cccccc;
     font-family: courier;
     font-size: 32px;
     border-radius: 10px;
-    width: 90%;
+    width: 1500px;
     height: 900px;
-    left: 50%;
-    transform: translateX(-50%);
     margin: auto;
-    border: 1px solid black;
-    box-shadow: 5px 5px 5px black;
+    // border: 1px solid black;
+    // box-shadow: 5px 5px 5px black;
 }
 
 form.solo-slam-form li{
@@ -428,7 +421,7 @@ input.slam-title {
 
 form.solo-slam-form div.button-container {
   bottom: 15px;
-  right: 15px;
+  right: 125px;
   position: absolute;
 }
 
@@ -628,19 +621,17 @@ img.alone {
 
 .group-slam-form {
   position: absolute;
-  height: 500px;
-  width: 800px;
-  background-color: darkgray;
+  height: 400px;
+  width: 600px;
   padding: 30px;
-  border: 1px solid black;
-  border-radius: 10px;
-  top: 50%;
+  top: 120px;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  box-shadow: 3px 3px 3px black;
+  transform: translateX(-50%);
 }
 
 .friends-list {
+  position: absolute;
+  left: 50px;
   height: 80%;
   width: 25%;
   overflow-y: scroll;
