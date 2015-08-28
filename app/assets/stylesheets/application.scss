@@ -588,7 +588,7 @@ ul.slam-list {
   top: 5%;;
   width: 60%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(50%);
   position: absolute;
   margin: 0 auto;
   border-radius: 15px;
