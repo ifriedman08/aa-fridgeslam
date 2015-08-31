@@ -18,3 +18,40 @@ Fridgeslam: inspired by the wordsmiths at Urban Dictionary, Fridgeslam is a plac
 - [x] Like finished slams
 - [x] Slam rankings page
 - [x] Newest slams page
+
+# Screenshots
+
+## About
+![about]
+
+## New Session
+![new-session]
+
+## New User
+![new-user]
+
+## Dashboard
+![dashboard]
+
+## Slams index
+![slam-index]
+
+## Slams Show
+![slam-show]
+
+## New Solo Slam
+![solo-slam-form]
+
+## New Group Slam
+![group-slam-form]
+
+
+
+[about]: docs/screenshots/About.png
+[dashboard]: docs/screenshots/Dash.png
+[new-session]: docs/screenshots/New_Session.png
+[new-user]: docs/screenshots/New_User.png
+[solo-slam-form]: docs/screenshots/New_Solo_Slam.png
+[group-slam-form]: docs/screenshots/New_Group_Slam.png
+[slam-index]: docs/screenshots/Slam_Index.png
+[slam-show]: docs/screenshots/Slam_Show.png
