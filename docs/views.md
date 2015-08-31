@@ -1,8 +1,5 @@
 # View Wireframes
 
-## Public Home
-![public-home]
-
 ## About
 ![about]
 
@@ -15,17 +12,11 @@
 ## Dashboard
 ![dashboard]
 
-## Top Solo Slams
-![public-top-solo]
-![public-top-solo-hover]
-![public-top-solo-modal]
+## Slams index
+![slam-index]
 
-## Top Group Slams
-![public-top-group]
-![top-group-hover]
-![group-modal]
-![group-modal-color1]
-![group-modal-color2]
+## Slams Show
+![slam-show]
 
 ## New Solo Slam
 ![solo-slam-form]
@@ -35,18 +26,11 @@
 
 
 
-[about]: ./wireframes/aboutpage.png
-[dashboard]: ./wireframes/dashboard.png
-[public-home]: ./wireframes/publichomepage.png
-[new-session]: ./wireframes/returninguser.png
-[new-user]: ./wireframes/newusersignup.png
-[public-top-solo]: ./wireframes/publictopsolo.png
-[public-top-solo-hover]: ./wireframes/publictopsolohover.png
-[public-top-solo-modal]: ./wireframes/publictopsolomodal.png
-[group-modal]: ./wireframes/groupmodal.png
-[group-modal-color1]: ./wireframes/groupmodalcolor1.png
-[group-modal-color2]: ./wireframes/groupmodalcolor2.png
-[group-slam-form]: ./wireframes/groupslamform.png
-[public-top-group]: ./wireframes/publictopgroup.png
-[top-group-hover]: ./wireframes/topgrouphover.png
-[solo-slam-form]: ./wireframes/topgrouphover.png
+[about]: ./screenshots/About.png
+[dashboard]: ./screenshots/Dash.png
+[new-session]: ./screenshots/New_Session.png
+[new-user]: ./screenshots/New_User.png
+[solo-slam-form]: ./screenshots/New_Solo_Slam.png
+[group-slam-form]: ./screenshots/New_Group_Slam.png
+[slam-index]: ./screenshots/Slam_Index.png
+[slam-show]: ./screenshots/Slam_Show.png

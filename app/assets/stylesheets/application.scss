@@ -281,9 +281,10 @@ div.content-holder > div{
 
 .content-holder {
   position: absolute;
-  overflow: scroll;
+  // overflow: scroll;
   left: 0;
   right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
 }
@@ -420,7 +421,7 @@ input.slam-title {
 }
 
 form.solo-slam-form div.button-container {
-  bottom: 15px;
+  bottom: 195px;
   right: 125px;
   position: absolute;
 }
