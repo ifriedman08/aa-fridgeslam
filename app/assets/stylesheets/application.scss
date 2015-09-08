@@ -338,17 +338,17 @@ img.new-line-icon {
 }
 
 form.solo-slam-form li {
-  margin: 10px;
+  margin: 5px;
+  padding: 5px;
   text-align: center;
   border: black 1px solid;
+  font-size: 22px;
 }
 
 form.solo-slam-form ul {
-  /*position: fixed;*/
   display: inline-block;
   float: left;
   top: 50%;
-  /*transform: translateY(-50%);*/
   list-style-type: none;
 }
 
@@ -358,18 +358,14 @@ form.solo-slam-form > div {
 }
 
 form.solo-slam-form {
-    // overflow-y: scroll;
     top: 150px;
     position: relative;
-    // background-color: #cccccc;
     font-family: courier;
     font-size: 32px;
     border-radius: 10px;
-    width: 1500px;
+    width: 1200px;
     height: 900px;
     margin: auto;
-    // border: 1px solid black;
-    // box-shadow: 5px 5px 5px black;
 }
 
 form.solo-slam-form li{
@@ -396,9 +392,9 @@ div.title-container {
 }
 
 div.slam-preview {
-  overflow: scroll;
   padding: 10px 20px;
   position: absolute;
+  font-size: 24px;
   right: 15px;
   top: 14%;
   border-radius: 10px;
@@ -409,14 +405,17 @@ div.slam-preview {
   width: 40%;
   height: 500px;
 }
+.group-slam-form div.slam-preview {
+  top: 20%;
+  font-size: 20px;
+}
 
 input.slam-title {
-  font-family: courier;
   text-align: right;
-  font-size: 36px;
+  font-size: 20px;
   border-radius: 10px;
-  width: 350px;
-  height: 60px;
+  width: 479px;
+  height: 40px;
 }
 
 form.solo-slam-form div.button-container {
@@ -515,6 +514,17 @@ li.req-list-item {
   box-shadow: 4px 4px 4px black;
   border: black 1px solid;
   padding: 10px;
+}
+
+.group-slam-form .punctuation-list {
+  padding: 0;
+}
+
+.group-slam-form .new-line-icon {
+  background-color: white;
+  padding: 5px;
+  height: 30px;
+  border: 1px solid black;
 }
 
 .user-search-list > li {
@@ -622,7 +632,7 @@ img.alone {
 .group-slam-form {
   position: absolute;
   height: 400px;
-  width: 600px;
+  width: 900px;
   padding: 30px;
   top: 120px;
   left: 50%;
@@ -660,6 +670,8 @@ button.submit-group-word{
 .group-slam-form .slam-title{
   width: 300px;
   float: right;
+  position: relative;
+  top: 50px;
 }
 
 .word-input{
@@ -675,7 +687,7 @@ button.submit-group-word{
 
 input.new-word{
   height: 70px;
-  width: 30%;
+  width: 40%;
   border: 1px black solid;
   border-radius: 10px;
   font-size: 15px;

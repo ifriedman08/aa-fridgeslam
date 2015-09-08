@@ -75,7 +75,7 @@ Fridgeslam.Views.SlamsNewGroup = Backbone.CompositeView.extend({
       });
       Fridgeslam.addedMemberIds = [];
       Backbone.history.navigate('#', { trigger: true });
-      $('.nav-bar').notify( 'Sarted your Group Slam! Find it in your Finished Slams.', {
+      $('.nav-bar').notify( 'Sarted your Group Slam! Find it in your Pending Slams.', {
         arrowShow: false,
         position: 'bottom center',
         className: 'success'
