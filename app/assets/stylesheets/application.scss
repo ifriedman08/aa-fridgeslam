@@ -134,6 +134,12 @@ div.nav-bar input {
   background-color: inherit;
   border: none;
 }
+@media screen and (max-width: 1000px) {
+
+        h1.greeting {
+            display:none;
+        }
+}
 
 div.logout-button {
   position: absolute;
@@ -456,11 +462,16 @@ button.post-slam {
 
 .requestor-list {
   position: absolute;
+  top: 100px;
   list-style-type: none;
   font-family: courier;
   left: 50%;
   transform: translateX(-50%);
   width: 50%;
+}
+
+.friends-num {
+  transform: translateX(35px) translateY(-20%);
 }
 
 li.req-list-item {
