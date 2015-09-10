@@ -4,15 +4,18 @@ Fridgeslam.Views.PendingFriendsIndex = Backbone.CompositeView.extend({
   className: 'requests-list-container',
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    secondrender = false;
+    this.listenTo(this.collection, 'sync', this.rerender);
     this.listenTo(this.collection, 'add', this.addRequestSubview);
     this.listenTo(this.collection, 'remove', this.removeRequestSubview);
     this.collection.each(function (request) {
       this.addRequestSubview(request);
     }.bind(this));
-    if (this.collection.length === 0) {
-      $('.requestor-list').append("<h2 class='no-reqs'>No requests here.</h2>");
-    }
+  },
+
+  rerender: function () {
+    secondrender = true;
+    this.render();
   },
 
   render: function () {
@@ -23,9 +26,6 @@ Fridgeslam.Views.PendingFriendsIndex = Backbone.CompositeView.extend({
 
     this.$el.html(content);
     this.attachSubviews();
-    // if (this.collection.length === 0) {
-    //   $('.requestor-list').append("<h2 class='no-reqs'>No requests here.</h2>");
-    // }
     return this;
   },
 

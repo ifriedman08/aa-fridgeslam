@@ -1,2 +1,11 @@
-<h2>Your pending friendship requests:</h2>
+<h2 class="friend-req-header">Your pending friendship requests:</h2>
 <ul class="requestor-list"></ul>
+<script type="text/javascript">
+  // window.onload = function () {
+    if (!$('.friends-num').text().trim() || $('.friends-num').text() === '0' ) {
+      debugger
+      $('.requestor-list').append("<h2 class='no-reqs'>Nothing here...</h2>");
+      // $('.friend-req-header').remove();
+    }
+  // }.bind(this);
+</script>

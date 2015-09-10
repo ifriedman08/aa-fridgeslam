@@ -450,6 +450,11 @@ button.post-slam {
   left: 50px;
 }
 
+.requests-list-container {
+  top: 100px;
+  position: relative;
+}
+
 .requests-list-container > h2 {
   text-align: center;
   font-family: courier;
@@ -457,7 +462,7 @@ button.post-slam {
 
 .requestor-list {
   position: absolute;
-  top: 100px;
+  top: 50px;
   list-style-type: none;
   font-family: courier;
   left: 50%;
