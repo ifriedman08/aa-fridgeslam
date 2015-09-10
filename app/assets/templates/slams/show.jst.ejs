@@ -26,7 +26,9 @@
     <div class="slam-likes">
       <p class="slam-likes"><%= slam.likes().length %> likes</p>
     </div>
-    <button type="button" class="like-button" name="button" data-slam-id="<%= slam.escape('id') %>">LIKE</button>
+    <% if (!slam.isLiked()) {%>
+      <button type="button" class="like-button" name="button" data-slam-id="<%= slam.escape('id') %>">LIKE</button>
+    <% }%>
     <a href="#">Back to dashboard</a>
   <% } else if (!slam.get('pending') && slam.isMember()) { %>
     <a href="#">Back to dashboard</a>

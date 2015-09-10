@@ -38,6 +38,16 @@ Fridgeslam.Models.Slam = Backbone.Model.extend({
     return result;
   },
 
+  isLiked: function () {
+    var result = false;
+    this.likes().forEach(function (liker) {
+      if (liker.get('user_id') === Fridgeslam.CURRENT_USER.id) {
+        result = true;
+      }
+    });
+    return result;
+  },
+
   parse: function (response) {
     if (response.user) {
       this.user().set(response.user, { parse: true });
