@@ -26,7 +26,7 @@ Fridgeslam.Views.PendingFriendsIndexItem = Backbone.CompositeView.extend({
         that.collection.remove(that.model);
         $('div.friends-num').text(Number($('div.friends-num').text()) - 1);
         if ($('div.friends-num').text() == 0) {
-          $('.requestor-list').append("<img class='alone' src='http://pre04.deviantart.net/3981/th/pre/f/2012/145/5/3/forever_alone_png_by_nfc_by_ninetailsfoxchan-d510mu7.png'>");
+          $('.requestor-list').append("<h2 class='no-reqs'>No requests here.</h2>");
         }
       }
     });
@@ -41,7 +41,7 @@ Fridgeslam.Views.PendingFriendsIndexItem = Backbone.CompositeView.extend({
         that.collection.remove(that.model);
         $('div.friends-num').text(Number($('div.friends-num').text()) - 1);
         if ($('div.friends-num').text() == 0) {
-          $('.requestor-list').append("<img class='alone' src='http://pre04.deviantart.net/3981/th/pre/f/2012/145/5/3/forever_alone_png_by_nfc_by_ninetailsfoxchan-d510mu7.png'>");
+          $('.requestor-list').append("<h2 class='no-reqs'>No requests here.</h2>");
         }
       },
     });
